@@ -5,5 +5,16 @@
   "main": "index.js",
   "repository": "git@github.com:JwanKhalaf/Bejebeje.React.git",
   "author": "J Khalaf <jwan.khalaf@outlook.com>",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.16.4"
+  }
 }
