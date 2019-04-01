@@ -1,0 +1,9 @@
+{
+  "name": "bejebeje.react",
+  "version": "1.0.0",
+  "description": "bejebeje's react-js frontend",
+  "main": "index.js",
+  "repository": "git@github.com:JwanKhalaf/Bejebeje.React.git",
+  "author": "J Khalaf <jwan.khalaf@outlook.com>",
+  "license": "GPL-3.0"
+}
