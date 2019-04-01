@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router } from '@reach/router';
-import { LoginControls } from '../logincontrols/LoginControls';
-import { Authorisation } from '../authorisation/Authorisation';
+import LoginControls from '../logincontrols/LoginControls';
+import Authorisation from '../authorisation/Authorisation';
 
 class App extends React.Component {
   render()
