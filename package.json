@@ -7,8 +7,10 @@
   "author": "J Khalaf <jwan.khalaf@outlook.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "@reach/router": "^1.2.1",
+    "oidc-client": "^1.7.0",
+    "react": "15.x || 16.x || 16.4.0-alpha.0911da3",
+    "react-dom": "15.x || 16.x || 16.4.0-alpha.0911da3"
   },
   "scripts": {
     "dev": "parcel src/index.html"
