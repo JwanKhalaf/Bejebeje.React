@@ -1,4 +1,5 @@
 import React from "react";
+import "./artists.scss";
 
 class Artists extends React.Component {
   constructor(props) {
@@ -40,9 +41,9 @@ class Artists extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <ul>
+        <ul className="is-artist-list">
           {items.map(item => (
-            <li key={item.slug}>
+            <li key={item.slug} className="is-artist-list-item">
               {item.firstName} {item.lastName}
             </li>
           ))}
