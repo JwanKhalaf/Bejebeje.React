@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.is-artist-list {
+  list-style: none;
+
+  .is-artist-list-item {
+    background-color: #1b3264;
+    margin-bottom: 30px;
+    color: #ffffff;
+    padding: 30px;
+    font-family: "Roboto", sans-serif;
+  }
+}
