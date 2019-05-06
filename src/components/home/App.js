@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 import Authorisation from "../authorisation/Authorisation";
 import Artists from "../artists/Artists";
+import "./app.scss";
 
 class App extends React.Component {
   render() {
