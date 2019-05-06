@@ -10,8 +10,6 @@ const defaultConfig = {
   post_logout_redirect_uri: process.env.IDENTITY_POST_LOGOUT_REDIRECT_URI
 };
 
-console.log(defaultConfig);
-
 class Authorisation extends React.Component {
   constructor(props, config) {
     super(props);
