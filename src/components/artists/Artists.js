@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../header/Header";
+import { Link } from "@reach/router";
 import "./artists.scss";
 
 class Artists extends React.Component {
@@ -47,7 +48,9 @@ class Artists extends React.Component {
           <ul className="is-artist-list">
             {items.map(item => (
               <li key={item.slug} className="is-artist-list-item">
-                {item.firstName} {item.lastName}
+                <Link to={item.slug + "/lyrics"}>
+                  {item.firstName} {item.lastName}
+                </Link>
               </li>
             ))}
           </ul>
