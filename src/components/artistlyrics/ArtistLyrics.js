@@ -48,7 +48,7 @@ class ArtistLyrics extends React.Component {
           <ul className="is-lyrics-list">
             {items.map(item => (
               <li key={item.slug} className="is-lyric-list-item">
-                <Link to={item.slug + "/lyrics"}>{item.title}</Link>
+                <Link to={item.slug}>{item.title}</Link>
               </li>
             ))}
           </ul>
