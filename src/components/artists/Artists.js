@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../header/Header";
 import "./artists.scss";
 
 class Artists extends React.Component {
@@ -41,13 +42,16 @@ class Artists extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <ul className="is-artist-list">
-          {items.map(item => (
-            <li key={item.slug} className="is-artist-list-item">
-              {item.firstName} {item.lastName}
-            </li>
-          ))}
-        </ul>
+        <>
+          <Header />
+          <ul className="is-artist-list">
+            {items.map(item => (
+              <li key={item.slug} className="is-artist-list-item">
+                {item.firstName} {item.lastName}
+              </li>
+            ))}
+          </ul>
+        </>
       );
     }
   }
