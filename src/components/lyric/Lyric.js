@@ -1,26 +1,30 @@
 import React from "react";
 import Header from "../header/Header";
-import { Link } from "@reach/router";
-import "./artistlyrics.scss";
+import "./lyric.scss";
 
-class ArtistLyrics extends React.Component {
+class Lyric extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      lyrics: []
+      lyric: null
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:5010/artists/" + this.props.artist + "/lyrics")
+    fetch(
+      "http://localhost:5010/artists/" +
+        this.props.artist +
+        "/lyrics/" +
+        this.props.lyric
+    )
       .then(res => res.json())
       .then(
         result => {
           this.setState({
             isLoaded: true,
-            lyrics: result
+            lyric: result
           });
         },
         // Note: it's important to handle errors here
@@ -36,7 +40,7 @@ class ArtistLyrics extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, lyrics: items } = this.state;
+    const { error, isLoaded, lyric } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -45,17 +49,14 @@ class ArtistLyrics extends React.Component {
       return (
         <>
           <Header />
-          <ul className="is-lyrics-list">
-            {items.map(item => (
-              <li key={item.slug} className="is-lyric-list-item">
-                <Link to={item.slug}>{item.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <div className="is-lyric">
+            <h1>{lyric.title}</h1>
+            {lyric.body}
+          </div>
         </>
       );
     }
   }
 }
 
-export default ArtistLyrics;
+export default Lyric;
