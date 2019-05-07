@@ -1,26 +1,26 @@
 import React from "react";
 import Header from "../header/Header";
 import { Link } from "@reach/router";
-import "./artists.scss";
+import "./artistlyrics.scss";
 
-class Artists extends React.Component {
+class ArtistLyrics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      artists: []
+      lyrics: []
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:5010/artists")
+    fetch("http://localhost:5010/artists/" + this.props.artist + "/lyrics")
       .then(res => res.json())
       .then(
         result => {
           this.setState({
             isLoaded: true,
-            artists: result
+            lyrics: result
           });
         },
         // Note: it's important to handle errors here
@@ -36,7 +36,7 @@ class Artists extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, artists: items } = this.state;
+    const { error, isLoaded, lyrics: items } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -45,12 +45,10 @@ class Artists extends React.Component {
       return (
         <>
           <Header />
-          <ul className="is-artist-list">
+          <ul className="is-lyrics-list">
             {items.map(item => (
-              <li key={item.slug} className="is-artist-list-item">
-                <Link to={item.slug + "/lyrics"}>
-                  {item.firstName} {item.lastName}
-                </Link>
+              <li key={item.slug} className="is-lyric-list-item">
+                <Link to={item.slug + "/lyrics"}>{item.title}</Link>
               </li>
             ))}
           </ul>
@@ -60,4 +58,4 @@ class Artists extends React.Component {
   }
 }
 
-export default Artists;
+export default ArtistLyrics;
