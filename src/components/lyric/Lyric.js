@@ -1,4 +1,6 @@
 import React from "react";
+import Header from "../header/Header";
+import "./lyric.scss";
 
 class Lyric extends React.Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class Lyric extends React.Component {
     fetch(
       "http://localhost:5010/artists/" +
         this.props.artist +
-        "/lyrics" +
+        "/lyrics/" +
         this.props.lyric
     )
       .then(res => res.json())
@@ -38,7 +40,22 @@ class Lyric extends React.Component {
   }
 
   render() {
-    return <h1>The lyric man!</h1>;
+    const { error, isLoaded, lyric } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <>
+          <Header />
+          <div className="is-lyric">
+            <h1>{lyric.title}</h1>
+            {lyric.body}
+          </div>
+        </>
+      );
+    }
   }
 }
 
