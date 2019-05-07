@@ -13,7 +13,8 @@
     "react-dom": "15.x || 16.x || 16.4.0-alpha.0911da3"
   },
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
