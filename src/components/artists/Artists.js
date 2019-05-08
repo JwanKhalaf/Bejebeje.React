@@ -54,11 +54,12 @@ class Artists extends React.Component {
     } else {
       return (
         <>
-          <Header />
+          <Header display={this.props.header} />
           <ul className="is-artist-list">
             {items.map(item => (
               <li key={item.slug} className="is-artist-list-item">
                 <Link to={item.slug + "/lyrics"}>
+                  <img src={item.imageUrl} />
                   {item.firstName} {item.lastName}
                 </Link>
               </li>
