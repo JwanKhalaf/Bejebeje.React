@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 import { Router } from "@reach/router";
-import Authorisation from "../authorisation/Authorisation";
-import Artists from "../artists/Artists";
-import ArtistLyrics from "../artistlyrics/ArtistLyrics";
-import Lyric from "../lyric/Lyric";
+import Authorisation from "./components/authorisation/Authorisation";
+import Artists from "./components/artists/Artists";
+import ArtistLyrics from "./components/artistlyrics/ArtistLyrics";
+import Lyric from "./components/lyric/Lyric";
 import "./app.scss";
 
 class App extends React.Component {
