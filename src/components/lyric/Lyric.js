@@ -48,7 +48,7 @@ class Lyric extends React.Component {
     } else {
       return (
         <>
-          <Header />
+          <Header display={this.props.header} />
           <div className="is-lyric">
             <h1>{lyric.title}</h1>
             {lyric.body}

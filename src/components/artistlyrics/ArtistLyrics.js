@@ -54,7 +54,7 @@ class ArtistLyrics extends React.Component {
     } else {
       return (
         <>
-          <Header />
+          <Header display={this.props.header} />
           <ul className="is-lyrics-list">
             {items.map(item => (
               <li key={item.slug} className="is-lyric-list-item">

@@ -13,8 +13,8 @@ class App extends React.Component {
       <div>
         <Router>
           <Artists path="/" />
-          <ArtistLyrics path=":artist/lyrics" />
-          <Lyric path=":artist/lyrics/:lyric" />
+          <ArtistLyrics path=":artist/lyrics" header="artist" />
+          <Lyric path=":artist/lyrics/:lyric" header="lyric" />
           <Authorisation path="/callback" />
         </Router>
       </div>
