@@ -1,4 +1,4 @@
-FROM node:8.16.0-alpine AS node_base
+FROM node:8.16.0-jessie AS node_base
 
 # getting dependencies
 FROM node_base as deps
