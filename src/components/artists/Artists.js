@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../header/Header";
 import { Link } from "@reach/router";
+import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./artists.scss";
 
 class Artists extends React.Component {
@@ -14,7 +15,7 @@ class Artists extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5010/artists")
+    fetch(API_CONSTANTS.artists)
       .then(res => res.json())
       .then(
         result => {
@@ -23,9 +24,6 @@ class Artists extends React.Component {
             artists: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         error => {
           this.setState({
             isLoaded: true,

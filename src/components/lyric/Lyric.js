@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../header/Header";
+import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./lyric.scss";
 
 class Lyric extends React.Component {
@@ -13,12 +14,7 @@ class Lyric extends React.Component {
   }
 
   componentDidMount() {
-    fetch(
-      "http://localhost:5010/artists/" +
-        this.props.artist +
-        "/lyrics/" +
-        this.props.lyric
-    )
+    fetch(API_CONSTANTS.lyric(this.props.artist, this.props.lyric))
       .then(res => res.json())
       .then(
         result => {
@@ -27,9 +23,6 @@ class Lyric extends React.Component {
             lyric: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         error => {
           this.setState({
             isLoaded: true,
