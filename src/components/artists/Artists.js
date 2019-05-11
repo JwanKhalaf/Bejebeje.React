@@ -57,7 +57,7 @@ class Artists extends React.Component {
             {items.map(item => (
               <li key={item.slug} className="is-artist-list-item">
                 <Link to={item.slug + "/lyrics"}>
-                  <img src={item.imageUrl} />
+                  <img src={API_CONSTANTS.image(item.slug)} />
                   {item.firstName} {item.lastName}
                 </Link>
               </li>

@@ -9,5 +9,6 @@ export const API_CONSTANTS = {
   artists: `${API_ROOT_URI}/artists`,
   artist: slug => `${API_ROOT_URI}/artists/${slug}/lyrics`,
   lyric: (artistSlug, lyricSlug) =>
-    `${API_ROOT_URI}/artists/${artistSlug}/lyrics/${lyricSlug}`
+    `${API_ROOT_URI}/artists/${artistSlug}/lyrics/${lyricSlug}`,
+  image: slug => `${API_ROOT_URI}/artists/${slug}/image`
 };
