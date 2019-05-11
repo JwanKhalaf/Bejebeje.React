@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../header/Header";
 import { Link } from "@reach/router";
+import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./artistlyrics.scss";
 
 class ArtistLyrics extends React.Component {
@@ -14,7 +15,7 @@ class ArtistLyrics extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5010/artists/" + this.props.artist + "/lyrics")
+    fetch(API_CONSTANTS.artist(this.props.artist))
       .then(res => res.json())
       .then(
         result => {
