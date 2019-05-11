@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  bejebeje-react:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      labels:
+        com.bejebeje.description: "Bejebeje's ReactJS frontend"
+    image: bejebeje-react:latest
+    ports:
+      - "1234:80"
+    env_file:
+      - ./variables.env
