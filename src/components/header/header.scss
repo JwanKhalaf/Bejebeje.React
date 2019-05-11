@@ -3,6 +3,14 @@
   padding: 25px;
   margin-bottom: 30px;
 
+  &.has-artist {
+    background-color: #1b3264;
+  }
+
+  &.has-lyric {
+    background-color: #505050;
+  }
+
   .is-logo {
     width: 40px;
     cursor: pointer;

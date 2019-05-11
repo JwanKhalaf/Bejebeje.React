@@ -40,15 +40,26 @@ class Artists extends React.Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
       return (
         <>
           <Header />
+          <ul className="is-preload-list">
+            <li className="is-list-item-preload" />
+            <li className="is-list-item-preload" />
+            <li className="is-list-item-preload" />
+            <li className="is-list-item-preload" />
+          </ul>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Header display={this.props.header} />
           <ul className="is-artist-list">
             {items.map(item => (
               <li key={item.slug} className="is-artist-list-item">
                 <Link to={item.slug + "/lyrics"}>
+                  <img src={item.imageUrl} />
                   {item.firstName} {item.lastName}
                 </Link>
               </li>
