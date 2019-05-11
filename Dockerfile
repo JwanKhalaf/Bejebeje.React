@@ -1,19 +1,13 @@
-FROM node:8.16.0-jessie AS node_base
-
-# getting dependencies
-FROM node_base as deps
+FROM mhart/alpine-node:11 AS builder
 WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
+COPY . .
 RUN yarn install
+RUN yarn run build
 
-# building the assets
-FROM node_base as build
+FROM mhart/alpine-node
+RUN yarn global add serve
 WORKDIR /app
-COPY --from=deps /app/node_modules ./
-COPY . /app
-RUN yarn build
-
-# final assets
-FROM scratch AS ui
-COPY --from=build /app/dist /app
+COPY --from=builder /app/dist .
+RUN pwd
+RUN ls -la
+CMD ["serve", "-p", "80", "-s", "."]
