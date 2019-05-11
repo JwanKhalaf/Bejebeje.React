@@ -59,6 +59,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# environment variables file
 .env
 variables.env
+
+# ssh
+deploy_key
