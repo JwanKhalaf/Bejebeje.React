@@ -52,7 +52,7 @@ class Artists extends React.Component {
     } else {
       return (
         <>
-          <Header display={this.props.header} />
+          <Header display={this.props.header} title="Browse artists" />
           <ul className="is-artist-list">
             {items.map(item => (
               <li key={item.slug} className="is-artist-list-item">
