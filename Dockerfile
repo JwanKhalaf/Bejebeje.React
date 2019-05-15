@@ -34,5 +34,8 @@ COPY --from=builder /app/dist .
 # copy the robots.txt file into the current /app directory of the image.
 COPY --from=builder /app/robots.txt .
 
+# copy the robots.txt file into the current /app directory of the image.
+COPY --from=builder /app/src/favicon/* .
+
 # run the light-weight server on port 80.
 CMD ["serve", "-p", "80", "-s", "."]
