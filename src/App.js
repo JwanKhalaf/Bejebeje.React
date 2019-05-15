@@ -27,9 +27,9 @@ class App extends React.Component {
     const date = artistFetchDate && new Date(parseInt(artistFetchDate, 10));
     const currentDate = Date.now();
 
-    const dataAge = Math.round((currentDate - date) / (1000 * 60));
+    const dataAgeInMinutes = Math.round((currentDate - date) / (1000 * 60));
 
-    const tooOld = dataAge >= 15;
+    const tooOld = dataAgeInMinutes >= 15;
 
     if (tooOld) {
       if (!this.state.isLoading) {
@@ -37,7 +37,7 @@ class App extends React.Component {
       }
     } else {
       console.log(
-        `Using data from local storage that is ${dataAge} minutes old.`
+        `Using data from local storage that is ${dataAgeInMinutes} minutes old.`
       );
     }
   }
