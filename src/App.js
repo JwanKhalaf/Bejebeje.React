@@ -11,24 +11,25 @@ import "./app.scss";
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       error: null,
       isLoaded: false,
+      isLoading: true,
       artists: []
     };
-  }
 
-  componentWillMount() {
     localStorage.getItem("artists") &&
       this.setState({
-        artists: JSON.parse(localStorage.getItem("artists")),
-        isLoaded: true
+        isLoaded: true,
+        isLoading: false,
+        artists: JSON.parse(localStorage.getItem("artists"))
       });
   }
 
   componentDidMount() {
     const artistFetchDate = localStorage.getItem("artistsFetchTimestamp");
-    const date = artistFetchDate && new Date(parseInt(artistFetchDate));
+    const date = artistFetchDate && new Date(parseInt(artistFetchDate, 10));
     const currentDate = Date.now();
 
     const dataAge = Math.round((currentDate - date) / (1000 * 60));
@@ -56,8 +57,12 @@ class App extends React.Component {
         result => {
           this.setState({
             isLoaded: true,
+            isLoading: false,
             artists: result
           });
+
+          localStorage.setItem("artists", JSON.stringify(this.state.artists));
+          localStorage.setItem("artistsFetchTimestamp", Date.now());
         },
         error => {
           this.setState({
@@ -66,11 +71,6 @@ class App extends React.Component {
           });
         }
       );
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem("artists", JSON.stringify(nextState.artists));
-    localStorage.setItem("artistsFetchTimestamp", Date.now());
   }
 
   render() {
