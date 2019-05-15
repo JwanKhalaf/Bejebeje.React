@@ -5,70 +5,25 @@ import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./artists.scss";
 
 class Artists extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      artists: []
-    };
-  }
-
-  componentDidMount() {
-    fetch(API_CONSTANTS.artists)
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            artists: result
-          });
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  }
-
   render() {
-    const { error, isLoaded, artists: items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return (
-        <>
-          <Header />
-          <ul className="is-preload-list">
-            <li className="is-list-item-preload" />
-            <li className="is-list-item-preload" />
-            <li className="is-list-item-preload" />
-            <li className="is-list-item-preload" />
-          </ul>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Header display={this.props.header} title="Browse artists" />
-          <ul className="is-artist-list">
-            {items.map(item => (
-              <li key={item.slug} className="is-artist-list-item">
-                <Link to={"artists/" + item.slug + "/lyrics"}>
-                  <img
-                    src={API_CONSTANTS.image(item.slug)}
-                    alt={item.firstName + " " + item.lastName}
-                  />
-                  {item.firstName} {item.lastName}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </>
-      );
-    }
+    return (
+      <>
+        <Header display={this.props.header} title="Browse artists" />
+        <ul className="is-artist-list">
+          {this.props.artists.map(artist => (
+            <li key={artist.slug} className="is-artist-list-item">
+              <Link to={"artists/" + artist.slug + "/lyrics"}>
+                <img
+                  src={API_CONSTANTS.image(artist.slug)}
+                  alt={artist.firstName + " " + artist.lastName}
+                />
+                {artist.firstName} {artist.lastName}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </>
+    );
   }
 }
 
