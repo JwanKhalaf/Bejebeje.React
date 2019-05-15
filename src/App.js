@@ -12,19 +12,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    const artists = JSON.parse(localStorage.getItem("artists"));
+
     this.state = {
       error: null,
       isLoaded: false,
-      isLoading: true,
-      artists: []
+      isLoading: false,
+      artists: artists || []
     };
-
-    localStorage.getItem("artists") &&
-      this.setState({
-        isLoaded: true,
-        isLoading: false,
-        artists: JSON.parse(localStorage.getItem("artists"))
-      });
   }
 
   componentDidMount() {
@@ -37,7 +32,9 @@ class App extends React.Component {
     const tooOld = dataAge >= 15;
 
     if (tooOld) {
-      this.fetchArtists();
+      if (!this.state.isLoading) {
+        this.fetchArtists();
+      }
     } else {
       console.log(
         `Using data from local storage that is ${dataAge} minutes old.`
@@ -48,7 +45,8 @@ class App extends React.Component {
   fetchArtists() {
     this.setState({
       artists: [],
-      isLoaded: false
+      isLoaded: false,
+      isLoading: true
     });
 
     fetch(API_CONSTANTS.artists)
@@ -67,6 +65,7 @@ class App extends React.Component {
         error => {
           this.setState({
             isLoaded: true,
+            isLoading: false,
             error
           });
         }
