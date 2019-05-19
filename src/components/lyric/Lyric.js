@@ -32,8 +32,12 @@ class Lyric extends React.Component {
       );
   }
 
+  createMarkup() {
+    return { __html: this.state.lyric.body };
+  }
+
   render() {
-    const { error, isLoaded, lyric } = this.state;
+    const { error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -42,10 +46,10 @@ class Lyric extends React.Component {
       return (
         <>
           <Header display={this.props.header} />
-          <div className="is-lyric">
-            <h1>{lyric.title}</h1>
-            {lyric.body}
-          </div>
+          <div
+            className="is-lyric"
+            dangerouslySetInnerHTML={this.createMarkup()}
+          />
         </>
       );
     }

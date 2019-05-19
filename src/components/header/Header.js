@@ -12,7 +12,7 @@ class Header extends React.Component {
           <img src={logo} alt="ace logo" className="is-logo" />
         </Link>
 
-        <h2>{this.props.title}</h2>
+        <h2 className="is-page-title">{this.props.title}</h2>
       </div>
     );
   }

@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
 .is-header {
   background-color: #c5101e;
   padding: 25px;
   margin-bottom: 30px;
+  border-radius: 0 0 3px 3px;
 
   &.has-artist {
     background-color: #1b3264;
@@ -19,8 +20,9 @@
     margin-bottom: 30px;
   }
 
-  h2 {
+  .is-page-title {
     font-family: "Roboto", sans-serif;
     color: #ffffff;
+    font-size: 2rem;
   }
 }
