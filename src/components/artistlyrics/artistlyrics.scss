@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
 .is-lyrics-list {
   list-style: none;
@@ -7,8 +7,8 @@
   .is-lyric-list-item {
     background-color: #505050;
     margin-bottom: 30px;
-    font-family: "Roboto", sans-serif;
     overflow: hidden;
+    border-radius: 3px 0 0 3px;
 
     a {
       color: #ffffff;
@@ -16,6 +16,8 @@
       display: block;
       width: 100%;
       height: 100%;
+      font-family: "Roboto", sans-serif;
+      font-weight: bold;
     }
   }
 }
