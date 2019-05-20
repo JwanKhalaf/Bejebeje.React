@@ -3,6 +3,7 @@ import Header from "../header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./artistlyrics.scss";
+import ArtistHeader from "../artistheader/ArtistHeader";
 
 class ArtistLyrics extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class ArtistLyrics extends React.Component {
     } else {
       return (
         <>
-          <Header display={this.props.header} />
+          <ArtistHeader artist={location.state.artist} />
           <ul className="is-lyrics-list">
             {items.map(item => (
               <li key={item.slug} className="is-lyric-list-item">
