@@ -11,12 +11,13 @@ class ArtistLyrics extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      lyrics: []
+      lyrics: [],
+      artist: {}
     };
   }
 
   componentDidMount() {
-    fetch(API_CONSTANTS.artist(this.props.artist))
+    fetch(API_CONSTANTS.artistLyrics(this.props.artist))
       .then(res => res.json())
       .then(
         result => {
@@ -32,10 +33,27 @@ class ArtistLyrics extends React.Component {
           });
         }
       );
+
+    fetch(API_CONSTANTS.singleArtist(this.props.artist))
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+            artist: result
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      );
   }
 
   render() {
-    const { error, isLoaded, lyrics: items } = this.state;
+    const { error, isLoaded, lyrics, artist } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -53,11 +71,11 @@ class ArtistLyrics extends React.Component {
     } else {
       return (
         <>
-          <ArtistHeader artist={location.state.artist} />
+          <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
           <ul className="is-lyrics-list">
-            {items.map(item => (
-              <li key={item.slug} className="is-lyric-list-item">
-                <Link to={item.slug}>{item.title}</Link>
+            {lyrics.map(lyric => (
+              <li key={lyric.slug} className="is-lyric-list-item">
+                <Link to={lyric.slug}>{lyric.title}</Link>
               </li>
             ))}
           </ul>
