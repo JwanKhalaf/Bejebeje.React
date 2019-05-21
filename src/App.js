@@ -77,8 +77,8 @@ class App extends React.Component {
       <div>
         <Router>
           <Artists path="/" artists={this.state.artists} />
-          <ArtistLyrics path="artists/:artist/lyrics" header="artist" />
-          <Lyric path="artists/:artist/lyrics/:lyric" header="lyric" />
+          <ArtistLyrics path="artists/:artistSlug/lyrics" />
+          <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
           <Authorisation path="/callback" />
         </Router>
       </div>

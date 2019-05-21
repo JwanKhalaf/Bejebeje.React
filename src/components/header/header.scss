@@ -6,18 +6,26 @@
   margin-bottom: 30px;
   border-radius: 0 0 3px 3px;
 
-  &.has-artist {
+  &.is-artist-header {
     background-color: #1b3264;
   }
 
-  &.has-lyric {
+  &.is-lyric-header {
     background-color: #505050;
   }
 
-  .is-logo {
-    width: 40px;
-    cursor: pointer;
+  .is-top-header {
     margin-bottom: 30px;
+    display: flex;
+
+    .is-logo-link {
+      display: inline-block;
+
+      .is-logo {
+        width: 40px;
+        cursor: pointer;
+      }
+    }
   }
 
   .is-page-title {

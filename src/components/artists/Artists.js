@@ -8,7 +8,7 @@ class Artists extends React.Component {
   render() {
     return (
       <>
-        <Header display={this.props.header} title="Browse artists" />
+        <Header title="Browse artists" />
         <ul className="is-artist-list">
           {this.props.artists.map(artist => (
             <li key={artist.slug} className="is-artist-list-item">
