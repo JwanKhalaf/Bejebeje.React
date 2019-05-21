@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../header/Header";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
+import LyricHeader from "../lyricheader/LyricHeader";
 import "./lyric.scss";
 
 class Lyric extends React.Component {
@@ -8,24 +8,47 @@ class Lyric extends React.Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
-      lyric: null
+      lyricIsLoaded: false,
+      artistIsLoaded: false,
+      lyric: null,
+      artist: null
     };
+
+    console.log(this.props);
   }
 
   componentDidMount() {
-    fetch(API_CONSTANTS.lyric(this.props.artist, this.props.lyric))
+    fetch(
+      API_CONSTANTS.singleLyric(this.props.artistSlug, this.props.lyricSlug)
+    )
       .then(res => res.json())
       .then(
         result => {
           this.setState({
-            isLoaded: true,
+            lyricIsLoaded: true,
             lyric: result
           });
         },
         error => {
           this.setState({
-            isLoaded: true,
+            lyricIsLoaded: true,
+            error
+          });
+        }
+      );
+
+    fetch(API_CONSTANTS.singleArtist(this.props.artistSlug))
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            artistIsLoaded: true,
+            artist: result
+          });
+        },
+        error => {
+          this.setState({
+            artistIsLoaded: true,
             error
           });
         }
@@ -37,21 +60,23 @@ class Lyric extends React.Component {
   }
 
   render() {
-    const { error, isLoaded } = this.state;
+    const { error, lyricIsLoaded, artistIsLoaded, artist } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <Header />;
-    } else {
+    } else if (!lyricIsLoaded && artistIsLoaded) {
+      return <LyricHeader artist={artist} />;
+    } else if (lyricIsLoaded && artistIsLoaded) {
       return (
         <>
-          <Header display={this.props.header} />
+          <LyricHeader artist={artist} />
           <div
             className="is-lyric"
             dangerouslySetInnerHTML={this.createMarkup()}
           />
         </>
       );
+    } else {
+      return <h2>not loaded!</h2>;
     }
   }
 }

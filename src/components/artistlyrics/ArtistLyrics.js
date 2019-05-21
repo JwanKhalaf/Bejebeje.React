@@ -17,7 +17,7 @@ class ArtistLyrics extends React.Component {
   }
 
   componentDidMount() {
-    fetch(API_CONSTANTS.artistLyrics(this.props.artist))
+    fetch(API_CONSTANTS.artistLyrics(this.props.artistSlug))
       .then(res => res.json())
       .then(
         result => {
@@ -34,7 +34,7 @@ class ArtistLyrics extends React.Component {
         }
       );
 
-    fetch(API_CONSTANTS.singleArtist(this.props.artist))
+    fetch(API_CONSTANTS.singleArtist(this.props.artistSlug))
       .then(res => res.json())
       .then(
         result => {
