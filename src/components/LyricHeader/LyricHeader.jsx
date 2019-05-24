@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderLogo from "../headerlogo/headerlogo";
-import SidebarToggle from "../sidebartoggle/SidebarToggle";
+import SidebarToggle from "../SidebarToggle/SidebarToggle";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "../header/header.scss";
 import "./lyricheader.scss";
