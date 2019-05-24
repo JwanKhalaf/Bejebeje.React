@@ -1,9 +1,9 @@
 import React from "react";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import HeaderLogo from "../HeaderLogo/headerlogo";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import SidebarToggle from "../SidebarToggle/SidebarToggle";
-import "../Header/header.scss";
-import "./artistheader.scss";
+import "../Header/Header.scss";
+import "./ArtistHeader.scss";
 
 class ArtistHeader extends React.Component {
   determineIfWordIsPluralOrNot() {
