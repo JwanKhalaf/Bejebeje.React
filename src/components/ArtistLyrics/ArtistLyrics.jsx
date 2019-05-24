@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../header/Header";
+import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./artistlyrics.scss";
-import ArtistHeader from "../artistheader/ArtistHeader";
+import "./ArtistLyrics.scss";
+import ArtistHeader from "../ArtistHeader/ArtistHeader";
 
 class ArtistLyrics extends React.Component {
   constructor(props) {

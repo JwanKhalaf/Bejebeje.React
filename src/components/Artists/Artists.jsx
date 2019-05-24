@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../header/Header";
+import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./artists.scss";
+import "./Artists.scss";
 
 class Artists extends React.Component {
   render() {

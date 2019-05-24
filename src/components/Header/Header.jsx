@@ -1,7 +1,7 @@
 import React from "react";
-import HeaderLogo from "../headerlogo/headerlogo";
-import SidebarToggle from "../sidebartoggle/SidebarToggle";
-import "./header.scss";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
+import SidebarToggle from "../SidebarToggle/SidebarToggle";
+import "./Header.scss";
 
 class Header extends React.Component {
   render() {

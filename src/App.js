@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 import { Router } from "@reach/router";
-import Authorisation from "./components/authorisation/Authorisation";
-import Artists from "./components/artists/Artists";
-import ArtistLyrics from "./components/artistlyrics/ArtistLyrics";
-import Lyric from "./components/lyric/Lyric";
+import Authorisation from "./components/Authorisation/Authorisation";
+import Artists from "./components/Artists/Artists";
+import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
+import Lyric from "./components/Lyric/Lyric";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
 import "./app.scss";
 
