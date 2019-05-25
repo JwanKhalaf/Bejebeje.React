@@ -68,14 +68,28 @@ class ArtistLyrics extends React.Component {
           </ul>
         </>
       );
+    } else if (isLoaded && lyrics.length === 0) {
+      return (
+        <>
+          <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
+          <div className="info-text__wrap">
+            <h2 className="info-text__heading">Sorry!</h2>
+            <h3 className="info-text__body">
+              No lyrics have been submitted yet.
+            </h3>
+          </div>
+        </>
+      );
     } else {
       return (
         <>
           <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
-          <ul className="is-lyrics-list">
+          <ul className="lyrics-list">
             {lyrics.map(lyric => (
-              <li key={lyric.slug} className="is-lyric-list-item">
-                <Link to={lyric.slug}>{lyric.title}</Link>
+              <li key={lyric.slug} className="lyric-list-item">
+                <Link to={lyric.slug} className="lyric-list-item__a">
+                  {lyric.title}
+                </Link>
               </li>
             ))}
           </ul>
