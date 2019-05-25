@@ -1,10 +1,37 @@
 .search__wrap {
   position: fixed;
   overflow: hidden;
-  bottom: 0;
+  bottom: 15px;
+  right: 15px;
+  width: 70px;
+  height: 70px;
+  background-color: #f2c963;
+  border-radius: 50%;
+  border: 1px solid #8c6d1f;
+}
+
+.search__form {
   width: 100%;
-  background-color: yellow;
-  padding: 25px;
+  height: 100%;
+}
+
+.search__button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #f2c963;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search__icon {
+  display: block;
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #8c6d1f;
 }
 
 .search__input {

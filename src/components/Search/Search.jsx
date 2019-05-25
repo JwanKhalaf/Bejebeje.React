@@ -22,14 +22,9 @@ class Search extends React.Component {
     return (
       <div className="search__wrap">
         <form className="search__form">
-          <input
-            className="search__input"
-            type="text"
-            placeholder="Search for artists ..."
-            ref={input => (this.search = input)}
-            onChange={this.handleInputChange}
-          />
-          <p>{this.state.query}</p>
+          <button className="search__button">
+            <i className="fal fa-search search__icon" />
+          </button>
         </form>
       </div>
     );
