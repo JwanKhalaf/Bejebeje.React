@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./Artists.scss";
+import Search from "../Search/Search";
 
 class Artists extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class Artists extends React.Component {
             </li>
           ))}
         </ul>
+        <Search />
       </>
     );
   }
