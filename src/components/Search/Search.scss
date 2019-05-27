@@ -1,18 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
 .search__wrap {
   position: fixed;
   overflow: hidden;
   bottom: 15px;
   right: 15px;
-  width: 70px;
-  height: 70px;
   background-color: #f2c963;
   border-radius: 50%;
-  border: 1px solid #8c6d1f;
+  transition: width 1.35s linear;
+}
+
+.search__wrap.is-active {
+  width: calc(100% - 25px);
+  border-radius: 3px 0 0 3px;
+  right: 0;
 }
 
 .search__form {
   width: 100%;
   height: 100%;
+  display: flex;
+}
+
+.search__input {
+  width: 0;
+  border: 0;
+  background-color: #f2c963;
+  color: #8c6d1f;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px dashed #8c6d1f;
+}
+
+.search__wrap.is-active .search__input {
+  width: 80%;
+  margin: 10px 25px;
 }
 
 .search__button {
@@ -27,14 +50,14 @@
   cursor: pointer;
 }
 
+.search__wrap.is-active .search__button {
+  width: auto;
+}
+
 .search__icon {
   display: block;
   font-weight: bold;
   font-size: 1.7rem;
   color: #8c6d1f;
-}
-
-.search__input {
-  padding: 10px;
-  width: 80%;
+  padding: 15px;
 }

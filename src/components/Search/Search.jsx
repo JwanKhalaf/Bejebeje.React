@@ -7,9 +7,19 @@ class Search extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
 
+    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+
     this.state = {
-      query: ""
+      query: "",
+      isActive: false
     };
+  }
+
+  handleSearchButtonClick(event) {
+    event.preventDefault();
+    this.setState({
+      isActive: true
+    });
   }
 
   handleInputChange() {
@@ -19,10 +29,15 @@ class Search extends React.Component {
   }
 
   render() {
+    const { isActive } = this.state;
     return (
-      <div className="search__wrap">
+      <div className={["search__wrap", isActive && "is-active"].join(" ")}>
         <form className="search__form">
-          <button className="search__button">
+          <input type="text" className="search__input" />
+          <button
+            className="search__button"
+            onClick={this.handleSearchButtonClick}
+          >
             <i className="fal fa-search search__icon" />
           </button>
         </form>
