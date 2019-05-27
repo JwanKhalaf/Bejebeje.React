@@ -1,5 +1,12 @@
 import React from "react";
+import posed from "react-pose";
 import "./Search.scss";
+
+const SearchButton = posed.div({
+  hoverable: true,
+  init: { scale: 1 },
+  hover: { scale: 1.1 }
+});
 
 class Search extends React.Component {
   constructor(props) {
@@ -31,7 +38,7 @@ class Search extends React.Component {
   render() {
     const { isActive } = this.state;
     return (
-      <div className={["search__wrap", isActive && "is-active"].join(" ")}>
+      <SearchButton className="search__wrap">
         <form className="search__form">
           <input type="text" className="search__input" />
           <button
@@ -41,7 +48,7 @@ class Search extends React.Component {
             <i className="fal fa-search search__icon" />
           </button>
         </form>
-      </div>
+      </SearchButton>
     );
   }
 }
