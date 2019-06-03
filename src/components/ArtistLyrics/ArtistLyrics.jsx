@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./ArtistLyrics.scss";
+import "./ArtistLyrics.css";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
 
 class ArtistLyrics extends React.Component {
@@ -86,8 +86,8 @@ class ArtistLyrics extends React.Component {
           <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
           <ul className="lyrics-list">
             {lyrics.map(lyric => (
-              <li key={lyric.slug} className="lyric-list-item">
-                <Link to={lyric.slug} className="lyric-list-item__a">
+              <li key={lyric.slug} className="lyric-item">
+                <Link to={lyric.slug} className="lyric-item__a">
                   {lyric.title}
                 </Link>
               </li>

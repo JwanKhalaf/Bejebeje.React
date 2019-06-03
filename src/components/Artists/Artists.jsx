@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./Artists.scss";
+import "./Artists.css";
 import Search from "../Search/Search";
 
 class Artists extends React.Component {
@@ -10,13 +10,17 @@ class Artists extends React.Component {
     return (
       <>
         <Header title="Browse artists" />
-        <ul className="is-artist-list">
+        <ul className="artist-list">
           {this.props.artists.map(artist => (
-            <li key={artist.slug} className="is-artist-list-item">
-              <Link to={"artists/" + artist.slug + "/lyrics"}>
+            <li key={artist.slug} className="artist-item">
+              <Link
+                to={"artists/" + artist.slug + "/lyrics"}
+                className="artist-item__link"
+              >
                 <img
                   src={API_CONSTANTS.image(artist.slug)}
                   alt={artist.firstName + " " + artist.lastName}
+                  className="artist-item__avatar"
                 />
                 {artist.firstName} {artist.lastName}
               </Link>

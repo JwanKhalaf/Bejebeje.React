@@ -2,8 +2,8 @@ import React from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import SidebarToggle from "../SidebarToggle/SidebarToggle";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "../Header/Header.scss";
-import "./LyricHeader.scss";
+import "../Header/Header.css";
+import "./LyricHeader.css";
 
 class LyricHeader extends React.Component {
   constructor(props) {
@@ -14,8 +14,8 @@ class LyricHeader extends React.Component {
 
   render() {
     return (
-      <div className="is-header is-lyric-header">
-        <div className="is-top-header">
+      <div className="top-header lyric-header">
+        <div className="top-header__brand">
           <HeaderLogo />
           <SidebarToggle />
         </div>

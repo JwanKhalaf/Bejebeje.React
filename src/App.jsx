@@ -6,7 +6,7 @@ import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
-import "./app.scss";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
