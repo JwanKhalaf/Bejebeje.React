@@ -1,19 +1,26 @@
 import React from "react";
 import posed from "react-pose";
-import "./Search.scss";
+import "./Search.css";
 
 const SearchButton = posed.div({
-  hoverable: true,
-  init: { scale: 1 },
-  hover: { scale: 1.1 },
-  expanded: {
-    transition: { duration: 30 },
-    width: 700,
-    radius: 3
+  active: {
+    width: "calc(100vw - 70px)",
+    borderRadius: 3
   },
-  hidden: {
-    width: 55,
-    radius: 50
+  inactive: {
+    width: "auto",
+    borderRadius: 50
+  }
+});
+
+const SearchInput = posed.input({
+  active: {
+    width: "calc(100vw - 25px)",
+    padding: 15
+  },
+  inactive: {
+    width: 0,
+    padding: 0
   }
 });
 
@@ -34,7 +41,7 @@ class Search extends React.Component {
   handleSearchButtonClick(event) {
     event.preventDefault();
     this.setState({
-      isActive: true
+      isActive: !this.state.isActive
     });
   }
 
@@ -49,10 +56,14 @@ class Search extends React.Component {
     return (
       <SearchButton
         className="search__wrap"
-        pose={isActive ? "expanded" : "hidden"}
+        pose={isActive ? "active" : "inactive"}
       >
         <form className="search__form">
-          <input type="text" className="search__input" />
+          <SearchInput
+            type="text"
+            className="search__input"
+            pose={isActive ? "active" : "inactive"}
+          />
           <button
             className="search__button"
             onClick={this.handleSearchButtonClick}
