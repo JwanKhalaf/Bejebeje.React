@@ -27,14 +27,11 @@ const SearchInput = posed.input({
 class Search extends React.Component {
   constructor(props) {
     super(props);
-
     this.handleInputChange = this.handleInputChange.bind(this);
-
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
-
     this.state = {
       query: "",
-      isActive: false
+      isActive: true
     };
   }
 
@@ -59,11 +56,7 @@ class Search extends React.Component {
         pose={isActive ? "active" : "inactive"}
       >
         <form className="search__form">
-          <SearchInput
-            type="text"
-            className="search__input"
-            pose={isActive ? "active" : "inactive"}
-          />
+          <SearchInput type="text" className="search__input" />
           <button
             className="search__button"
             onClick={this.handleSearchButtonClick}
