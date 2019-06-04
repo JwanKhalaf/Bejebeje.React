@@ -4,18 +4,20 @@ import "./Search.css";
 
 const SearchButton = posed.div({
   active: {
-    width: "calc(100vw - 70px)",
-    borderRadius: 3
+    width: 600,
+    borderRadius: 3,
+    transition: { duration: 20000 }
   },
   inactive: {
-    width: "auto",
-    borderRadius: 50
+    width: 68,
+    borderRadius: 50,
+    transition: { duration: 20000 }
   }
 });
 
 const SearchInput = posed.input({
   active: {
-    width: "calc(100vw - 25px)",
+    width: 600,
     padding: 15
   },
   inactive: {
