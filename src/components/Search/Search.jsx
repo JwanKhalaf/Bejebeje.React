@@ -33,7 +33,7 @@ class Search extends React.Component {
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
     this.state = {
       query: "",
-      isActive: true
+      isActive: false
     };
   }
 

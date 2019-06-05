@@ -2,7 +2,7 @@
 
 .search__wrap {
   position: fixed;
-  /* overflow: hidden; */
+  overflow: hidden;
   bottom: 15px;
   right: 15px;
   background-color: #f2c963;
@@ -18,8 +18,7 @@
 
 .search__input {
   border: 0;
-  /* background-color: #fdf3d7; */
-  background-color: red;
+  background-color: #fdf3d7;
   color: #8c6d1f;
   font-size: 1.3rem;
   font-weight: bold;
@@ -30,12 +29,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 100%; */
   height: 100%;
   background-color: #f2c963;
   border: none;
   cursor: pointer;
-  flex-grow: 0;
 }
 
 .search__icon {
