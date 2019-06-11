@@ -13,6 +13,7 @@ class App extends React.Component {
     super(props);
 
     this.searchArtists = this.searchArtists.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
 
     const artists = JSON.parse(localStorage.getItem("artists"));
 
@@ -20,7 +21,8 @@ class App extends React.Component {
       error: null,
       isLoaded: false,
       isLoading: false,
-      artists: artists || []
+      artists: artists || [],
+      searchTerm: ""
     };
   }
 
@@ -74,6 +76,14 @@ class App extends React.Component {
       );
   }
 
+  handleSearchInput(searchTerm) {
+    if (searchTerm.length >= 3) {
+      this.searchArtists(searchTerm);
+    } else {
+      this.fetchArtists();
+    }
+  }
+
   searchArtists(name) {
     this.setState({
       artists: [],
@@ -85,6 +95,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(
         result => {
+          console.table(result);
           this.setState({
             isLoaded: true,
             isLoading: false,
@@ -108,7 +119,7 @@ class App extends React.Component {
           <Artists
             path="/"
             artists={this.state.artists}
-            search={this.fetchArtists}
+            search={this.handleSearchInput}
           />
           <ArtistLyrics path="artists/:artistSlug/lyrics" />
           <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />

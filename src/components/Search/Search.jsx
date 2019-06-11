@@ -5,13 +5,13 @@ import "./Search.css";
 const SearchButton = posed.div({
   active: {
     width: 600,
-    borderRadius: 3,
-    transition: { duration: 20000 }
+    borderRadius: 3
+    // transition: { duration: 20000 }
   },
   inactive: {
     width: 68,
-    borderRadius: 50,
-    transition: { duration: 20000 }
+    borderRadius: 50
+    // transition: { duration: 20000 }
   }
 });
 
