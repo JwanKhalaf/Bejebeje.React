@@ -29,6 +29,7 @@ const SearchInput = posed.input({
 class Search extends React.Component {
   constructor(props) {
     super(props);
+    this.searchInput = React.createRef();
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
     this.state = {
@@ -42,6 +43,7 @@ class Search extends React.Component {
     this.setState({
       isActive: !this.state.isActive
     });
+    this.searchInput.current.focus();
   }
 
   handleInputChange(event) {
@@ -60,6 +62,7 @@ class Search extends React.Component {
             type="text"
             className="search__input"
             onChange={this.handleInputChange}
+            ref={this.searchInput}
           />
           <button
             className="search__button"
