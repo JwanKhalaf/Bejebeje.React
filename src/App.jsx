@@ -12,6 +12,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.searchArtists = this.searchArtists.bind(this);
+
     const artists = JSON.parse(localStorage.getItem("artists"));
 
     this.state = {
@@ -72,11 +74,42 @@ class App extends React.Component {
       );
   }
 
+  searchArtists(name) {
+    this.setState({
+      artists: [],
+      isLoaded: false,
+      isLoading: true
+    });
+
+    fetch(API_CONSTANTS.searchArtists(name))
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+            isLoading: false,
+            artists: result
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            isLoading: false,
+            error
+          });
+        }
+      );
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Artists path="/" artists={this.state.artists} />
+          <Artists
+            path="/"
+            artists={this.state.artists}
+            search={this.fetchArtists}
+          />
           <ArtistLyrics path="artists/:artistSlug/lyrics" />
           <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
           <Authorisation path="/callback" />

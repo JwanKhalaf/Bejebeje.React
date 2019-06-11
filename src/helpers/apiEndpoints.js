@@ -8,6 +8,7 @@ const API_ROOT_URI =
 export const API_CONSTANTS = {
   artists: `${API_ROOT_URI}/artists`,
   singleArtist: slug => `${API_ROOT_URI}/artists/${slug}`,
+  searchArtists: term => `${API_ROOT_URI}/artists?name=${term}`,
   artistLyrics: slug => `${API_ROOT_URI}/artists/${slug}/lyrics`,
   singleLyric: (artistSlug, lyricSlug) =>
     `${API_ROOT_URI}/artists/${artistSlug}/lyrics/${lyricSlug}`,

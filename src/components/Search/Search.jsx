@@ -44,10 +44,8 @@ class Search extends React.Component {
     });
   }
 
-  handleInputChange() {
-    this.setState({
-      query: this.search.value
-    });
+  handleInputChange(event) {
+    this.props.search(event.target.value);
   }
 
   render() {
@@ -58,7 +56,11 @@ class Search extends React.Component {
         pose={isActive ? "active" : "inactive"}
       >
         <form className="search__form">
-          <SearchInput type="text" className="search__input" />
+          <SearchInput
+            type="text"
+            className="search__input"
+            onChange={this.handleInputChange}
+          />
           <button
             className="search__button"
             onClick={this.handleSearchButtonClick}

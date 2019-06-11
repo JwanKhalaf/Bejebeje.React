@@ -27,7 +27,7 @@ class Artists extends React.Component {
             </li>
           ))}
         </ul>
-        <Search />
+        <Search search={this.props.search} />
       </>
     );
   }
