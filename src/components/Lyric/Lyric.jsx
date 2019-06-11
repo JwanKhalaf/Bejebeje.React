@@ -1,7 +1,7 @@
 import React from "react";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
-import "./lyric.scss";
+import "./lyric.css";
 
 class Lyric extends React.Component {
   constructor(props) {

@@ -1,18 +1,18 @@
 import React from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import SidebarToggle from "../SidebarToggle/SidebarToggle";
-import "./Header.scss";
+import "./Header.css";
 
 class Header extends React.Component {
   render() {
     return (
-      <div className="is-header is-home-header">
-        <div className="is-top-header">
+      <div className="top-header home-header">
+        <div className="top-header__brand">
           <HeaderLogo />
           <SidebarToggle />
         </div>
 
-        <h2 className="is-page-title">{this.props.title}</h2>
+        <h2 className="top-header__title">{this.props.title}</h2>
       </div>
     );
   }

@@ -6,11 +6,14 @@ import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
-import "./app.scss";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.searchArtists = this.searchArtists.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
 
     const artists = JSON.parse(localStorage.getItem("artists"));
 
@@ -18,7 +21,8 @@ class App extends React.Component {
       error: null,
       isLoaded: false,
       isLoading: false,
-      artists: artists || []
+      artists: artists || [],
+      searchTerm: ""
     };
   }
 
@@ -72,11 +76,51 @@ class App extends React.Component {
       );
   }
 
+  handleSearchInput(searchTerm) {
+    if (searchTerm.length >= 3) {
+      this.searchArtists(searchTerm);
+    } else {
+      this.fetchArtists();
+    }
+  }
+
+  searchArtists(name) {
+    this.setState({
+      artists: [],
+      isLoaded: false,
+      isLoading: true
+    });
+
+    fetch(API_CONSTANTS.searchArtists(name))
+      .then(res => res.json())
+      .then(
+        result => {
+          console.table(result);
+          this.setState({
+            isLoaded: true,
+            isLoading: false,
+            artists: result
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            isLoading: false,
+            error
+          });
+        }
+      );
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Artists path="/" artists={this.state.artists} />
+          <Artists
+            path="/"
+            artists={this.state.artists}
+            search={this.handleSearchInput}
+          />
           <ArtistLyrics path="artists/:artistSlug/lyrics" />
           <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
           <Authorisation path="/callback" />

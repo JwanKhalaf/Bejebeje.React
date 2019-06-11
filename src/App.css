@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline: none;
+  font-size: 16px;
+}
+
+body {
+  background-color: #e8e2db;
+}
+
+.is-preload-list {
+  list-style: none;
+  padding: 0 0 0 25px;
+}
+
+.is-list-item-preload {
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 6%, #dddddd 25%, #eeeeee 90%);
+  background-size: 1200px 104px;
+  height: 78px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -2000px 0;
+  }
+  100% {
+    background-position: 2000px 0;
+  }
+}

@@ -9,8 +9,9 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "oidc-client": "^1.7.0",
-    "react": "15.x || 16.x || 16.4.0-alpha.0911da3",
-    "react-dom": "15.x || 16.x || 16.4.0-alpha.0911da3"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-pose": "^4.0.8"
   },
   "scripts": {
     "dev": "parcel src/index.html",

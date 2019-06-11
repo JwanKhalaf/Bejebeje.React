@@ -2,8 +2,8 @@ import React from "react";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import SidebarToggle from "../SidebarToggle/SidebarToggle";
-import "../Header/Header.scss";
-import "./ArtistHeader.scss";
+import "../Header/Header.css";
+import "./ArtistHeader.css";
 
 class ArtistHeader extends React.Component {
   determineIfWordIsPluralOrNot() {
@@ -16,8 +16,8 @@ class ArtistHeader extends React.Component {
 
   render() {
     return (
-      <div className="is-header is-artist-header">
-        <div className="is-top-header">
+      <div className="top-header artist-header">
+        <div className="top-header__brand">
           <HeaderLogo />
           <SidebarToggle />
         </div>

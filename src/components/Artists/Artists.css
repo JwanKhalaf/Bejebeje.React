@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+.artist-list {
+  list-style: none;
+  padding: 0 0 0 25px;
+}
+
+.artist-item {
+  background-color: #1b3264;
+  margin-bottom: 30px;
+  overflow: hidden;
+  border-radius: 3px 0 0 3px;
+}
+
+.artist-item__link {
+  color: #ffffff;
+  padding: 30px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.artist-item__avatar {
+  display: block;
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
