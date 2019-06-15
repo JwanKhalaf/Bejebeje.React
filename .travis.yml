@@ -7,7 +7,6 @@ branches:
   only:
     - master
     - develop
-    - feature/futher-improving-accessability
 before_script:
   - chmod -R a+x scripts
 script:
