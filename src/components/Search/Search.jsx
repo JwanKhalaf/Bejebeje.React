@@ -58,7 +58,7 @@ class Search extends React.Component {
         pose={isActive ? "active" : "inactive"}
       >
         <form className="search__form">
-          <label>Search</label>
+          <label className="search__label">Search</label>
           <SearchInput
             type="text"
             className="search__input"
@@ -68,8 +68,8 @@ class Search extends React.Component {
           <button
             className="search__button"
             onClick={this.handleSearchButtonClick}
+            aria-label="Search"
           >
-            Search
             <i className="fal fa-search search__icon" />
           </button>
         </form>
