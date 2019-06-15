@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
 .top-header {
-  background-color: #c5101e;
+  background-color: #ff5b5b;
   padding: 25px;
   margin-bottom: 20px;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 25px 25px;
 }
 
 .artist-header {
-  background-color: #1b3264;
+  background-color: #586174;
 }
 
 .lyric-header {
