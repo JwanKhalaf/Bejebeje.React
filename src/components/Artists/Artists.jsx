@@ -2,7 +2,8 @@ import React from "react";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./Artists.scss";
+import "./Artists.css";
+import Search from "../Search/Search";
 
 function Artists(props) {
   const getPrimaryArtistSlug = slugs => {
@@ -21,6 +22,7 @@ function Artists(props) {
                 <img
                   src={API_CONSTANTS.image(primarySlug)}
                   alt={artist.firstName + " " + artist.lastName}
+                  className="artist-item__avatar"
                 />
                 {artist.firstName} {artist.lastName}
               </Link>
@@ -28,6 +30,7 @@ function Artists(props) {
           );
         })}
       </ul>
+      <Search search={this.props.search} />
     </>
   );
 }

@@ -1,87 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./ArtistLyrics.scss";
+import "./ArtistLyrics.css";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
 
-class ArtistLyrics extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      lyrics: [],
-      artist: {}
-    };
-  }
+function ArtistLyrics(props) {
+  const [lyrics, setLyrics] = useState([]);
+  const [artist, setArtist] = useState();
 
-  componentDidMount() {
+  useEffect(() => {
     axios
-      .get(API_CONSTANTS.artistLyrics(this.props.artistSlug))
-      .then(result => {
-        this.setState({
-          isLoaded: true,
-          lyrics: result.data
-        });
-      });
+      .all([
+        axios.get(API_CONSTANTS.singleArtist(props.artistSlug)),
+        axios.get(API_CONSTANTS.artistLyrics(props.artistSlug))
+      ])
+      .then(
+        axios.spread((artistResponse, lyricsResponse) => {
+          setArtist(artistResponse.data);
+          setLyrics(lyricsResponse.data);
+        })
+      );
+  }, []);
 
-    axios
-      .get(API_CONSTANTS.singleArtist(this.props.artistSlug))
-      .then(result => {
-        this.setState({
-          isLoaded: true,
-          artist: result.data
-        });
-      });
+  if (artist == null && lyrics.length === 0) {
+    return (
+      <>
+        <Header />
+        <ul className="is-preload-list">
+          <li className="is-list-item-preload" />
+          <li className="is-list-item-preload" />
+          <li className="is-list-item-preload" />
+          <li className="is-list-item-preload" />
+        </ul>
+      </>
+    );
   }
 
-  render() {
-    const { error, isLoaded, lyrics, artist } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return (
-        <>
-          <Header />
-          <ul className="is-preload-list">
-            <li className="is-list-item-preload" />
-            <li className="is-list-item-preload" />
-            <li className="is-list-item-preload" />
-            <li className="is-list-item-preload" />
-          </ul>
-        </>
-      );
-    } else if (isLoaded && lyrics.length === 0) {
-      return (
-        <>
-          <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
-          <div className="info-text__wrap">
-            <h2 className="info-text__heading">Sorry!</h2>
-            <h3 className="info-text__body">
-              No lyrics have been submitted yet.
-            </h3>
-          </div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
-          <ul className="lyrics-list">
-            {lyrics.map(lyric => (
-              <li key={lyric.slug} className="lyric-list-item">
-                <Link to={lyric.slug} className="lyric-list-item__a">
-                  {lyric.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </>
-      );
-    }
+  if (artist && lyrics.length === 0) {
+    return (
+      <>
+        <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
+        <div className="info-text__wrap">
+          <h2 className="info-text__heading">Sorry!</h2>
+          <h3 className="info-text__body">
+            No lyrics have been submitted yet.
+          </h3>
+        </div>
+      </>
+    );
   }
+
+  return (
+    <>
+      <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
+      <ul className="lyrics-list">
+        {lyrics.map(lyric => (
+          <li key={lyric.slug} className="lyric-item">
+            <Link to={lyric.slug} className="lyric-item__a">
+              {lyric.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default ArtistLyrics;
