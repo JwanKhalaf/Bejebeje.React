@@ -16,6 +16,10 @@
   display: flex;
 }
 
+.search__label {
+  display: none;
+}
+
 .search__input {
   border: 0;
   background-color: #fdf3d7;
