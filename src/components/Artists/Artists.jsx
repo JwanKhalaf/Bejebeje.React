@@ -13,12 +13,15 @@ function Artists(props) {
   return (
     <>
       <Header title="Browse artists" />
-      <ul className="is-artist-list">
+      <ul className="artist-list">
         {props.artists.map(artist => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
           return (
-            <li key={primarySlug} className="is-artist-list-item">
-              <Link to={"artists/" + primarySlug + "/lyrics"}>
+            <li key={primarySlug} className="artist-item">
+              <Link
+                to={"artists/" + primarySlug + "/lyrics"}
+                className="artist-item__link"
+              >
                 <img
                   src={API_CONSTANTS.image(primarySlug)}
                   alt={artist.firstName + " " + artist.lastName}
@@ -30,7 +33,7 @@ function Artists(props) {
           );
         })}
       </ul>
-      <Search search={this.props.search} />
+      <Search search={props.search} />
     </>
   );
 }

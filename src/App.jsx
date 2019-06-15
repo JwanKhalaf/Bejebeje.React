@@ -62,25 +62,13 @@ class App extends React.Component {
       isLoading: true
     });
 
-    fetch(API_CONSTANTS.searchArtists(name))
-      .then(res => res.json())
-      .then(
-        result => {
-          console.table(result);
-          this.setState({
-            isLoaded: true,
-            isLoading: false,
-            artists: result
-          });
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            isLoading: false,
-            error
-          });
-        }
-      );
+    axios.get(API_CONSTANTS.searchArtists(name)).then(result => {
+      this.setState({
+        isLoaded: true,
+        isLoading: false,
+        artists: result
+      });
+    });
   }
 
   render() {
