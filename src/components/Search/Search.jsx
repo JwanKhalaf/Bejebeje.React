@@ -58,12 +58,15 @@ class Search extends React.Component {
         pose={isActive ? "active" : "inactive"}
       >
         <form className="search__form">
-          <label className="search__label">Search</label>
+          <label className="search__label" htmlFor="search">
+            Search
+          </label>
           <SearchInput
             type="text"
             className="search__input"
             onChange={this.handleInputChange}
             ref={this.searchInput}
+            id="search"
           />
           <button
             className="search__button"
