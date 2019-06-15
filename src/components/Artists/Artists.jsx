@@ -4,27 +4,32 @@ import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./Artists.scss";
 
-class Artists extends React.Component {
-  render() {
-    return (
-      <>
-        <Header title="Browse artists" />
-        <ul className="is-artist-list">
-          {this.props.artists.map(artist => (
-            <li key={artist.slug} className="is-artist-list-item">
-              <Link to={"artists/" + artist.slug + "/lyrics"}>
+function Artists(props) {
+  const getPrimaryArtistSlug = slugs => {
+    return slugs.filter(slug => slug.isPrimary)[0].name;
+  };
+
+  return (
+    <>
+      <Header title="Browse artists" />
+      <ul className="is-artist-list">
+        {props.artists.map(artist => {
+          const primarySlug = getPrimaryArtistSlug(artist.slugs);
+          return (
+            <li key={primarySlug} className="is-artist-list-item">
+              <Link to={"artists/" + primarySlug + "/lyrics"}>
                 <img
-                  src={API_CONSTANTS.image(artist.slug)}
+                  src={API_CONSTANTS.image(primarySlug)}
                   alt={artist.firstName + " " + artist.lastName}
                 />
                 {artist.firstName} {artist.lastName}
               </Link>
             </li>
-          ))}
-        </ul>
-      </>
-    );
-  }
+          );
+        })}
+      </ul>
+    </>
+  );
 }
 
 export default Artists;
