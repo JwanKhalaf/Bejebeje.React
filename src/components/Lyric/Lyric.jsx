@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
 import "./lyric.scss";
@@ -18,41 +19,22 @@ class Lyric extends React.Component {
   }
 
   componentDidMount() {
-    fetch(
-      API_CONSTANTS.singleLyric(this.props.artistSlug, this.props.lyricSlug)
-    )
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            lyricIsLoaded: true,
-            lyric: result
-          });
-        },
-        error => {
-          this.setState({
-            lyricIsLoaded: true,
-            error
-          });
-        }
-      );
+    const artistSlug = this.props.artistSlug;
+    const lyricSlug = this.props.lyricSlug;
 
-    fetch(API_CONSTANTS.singleArtist(this.props.artistSlug))
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            artistIsLoaded: true,
-            artist: result
-          });
-        },
-        error => {
-          this.setState({
-            artistIsLoaded: true,
-            error
-          });
-        }
-      );
+    axios.get(API_CONSTANTS.singleLyric(artistSlug, lyricSlug)).then(result => {
+      this.setState({
+        lyricIsLoaded: true,
+        lyric: result.data
+      });
+    });
+
+    axios.get(API_CONSTANTS.singleArtist(artistSlug)).then(result => {
+      this.setState({
+        artistIsLoaded: true,
+        artist: result.data
+      });
+    });
   }
 
   createMarkup() {

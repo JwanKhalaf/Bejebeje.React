@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
+import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./ArtistLyrics.scss";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
@@ -17,39 +18,23 @@ class ArtistLyrics extends React.Component {
   }
 
   componentDidMount() {
-    fetch(API_CONSTANTS.artistLyrics(this.props.artistSlug))
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            lyrics: result
-          });
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
+    axios
+      .get(API_CONSTANTS.artistLyrics(this.props.artistSlug))
+      .then(result => {
+        this.setState({
+          isLoaded: true,
+          lyrics: result.data
+        });
+      });
 
-    fetch(API_CONSTANTS.singleArtist(this.props.artistSlug))
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            artist: result
-          });
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
+    axios
+      .get(API_CONSTANTS.singleArtist(this.props.artistSlug))
+      .then(result => {
+        this.setState({
+          isLoaded: true,
+          artist: result.data
+        });
+      });
   }
 
   render() {
