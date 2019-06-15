@@ -6,7 +6,7 @@
 }
 
 .artist-item {
-  background-color: #c5c5c5;
+  background-color: #ffffff;
   margin-bottom: 20px;
   overflow: hidden;
   border-radius: 5px;
@@ -14,7 +14,7 @@
 }
 
 .artist-item__link {
-  color: #505050;
+  color: #4f4b52;
   padding: 15px;
   display: block;
   height: 100%;
@@ -31,5 +31,6 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid #505050;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 4px #888888;
 }

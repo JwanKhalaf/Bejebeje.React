@@ -1,27 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
-.top-header {
-  background-color: #ff5b5b;
-  padding: 25px;
+header {
+  padding: 30px 15px 15px 15px;
   margin-bottom: 20px;
-  border-radius: 0 0 25px 25px;
 }
 
-.artist-header {
-  background-color: #586174;
-}
-
-.lyric-header {
-  background-color: #505050;
-}
-
-.top-header__brand {
-  margin-bottom: 30px;
-  display: flex;
-}
-
-.top-header__title {
+.header__title {
   font-family: "Roboto", sans-serif;
-  color: #ffffff;
+  color: #0b0c0f;
   font-size: 2rem;
 }
