@@ -16,12 +16,7 @@ class ArtistHeader extends React.Component {
 
   render() {
     return (
-      <div className="top-header artist-header">
-        <div className="top-header__brand">
-          <HeaderLogo />
-          <SidebarToggle />
-        </div>
-
+      <header>
         <h2 className="artist-header__artist-name">
           {this.props.artist.firstName}
           <br />
@@ -39,7 +34,7 @@ class ArtistHeader extends React.Component {
             {this.props.artistLyricCount} {this.determineIfWordIsPluralOrNot()}
           </h4>
         </div>
-      </div>
+      </header>
     );
   }
 }

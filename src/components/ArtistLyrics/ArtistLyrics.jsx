@@ -58,7 +58,7 @@ function ArtistLyrics(props) {
       <ul className="lyrics-list">
         {lyrics.map(lyric => (
           <li key={lyric.slug} className="lyric-item">
-            <Link to={lyric.slug} className="lyric-item__a">
+            <Link to={lyric.slug} className="lyric-item__link">
               {lyric.title}
             </Link>
           </li>

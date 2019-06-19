@@ -3,7 +3,7 @@
 .artist-header__artist-name {
   font-weight: bold;
   font-size: 4rem;
-  color: #ffffff;
+  color: #4f4b52;
   font-family: "Roboto", sans-serif;
   margin-bottom: 20px;
 }
@@ -14,9 +14,9 @@
 }
 
 .artist-meta__image {
-  width: 70px;
-  height: 70px;
-  border: 2px solid #ffffff;
+  width: 150px;
+  height: 150px;
+  border: 2px solid #4f4b52;
   border-radius: 50%;
   margin-right: 20px;
 }
@@ -24,5 +24,5 @@
 .artist-meta__lyric-count {
   font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
-  color: #ffffff;
+  color: #4f4b52;
 }
