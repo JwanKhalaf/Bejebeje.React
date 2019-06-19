@@ -14,28 +14,21 @@ class LyricHeader extends React.Component {
 
   render() {
     return (
-      <div className="top-header lyric-header">
-        <div className="top-header__brand">
-          <HeaderLogo />
-          <SidebarToggle />
-        </div>
-
+      <header>
         <div className="is-lyric-meta-information">
           <img
-            className="is-artist-image"
+            className="artist-meta__image"
             src={API_CONSTANTS.image(this.props.artist.slug)}
             alt={this.props.artist.firstName + " " + this.props.artist.lastName}
           />
 
           <div className="is-artist-information">
-            <h3 className="is-lyric-page-artist-name-label">Artist</h3>
-
-            <h3 className="is-lyric-page-artist-name">
+            <h3 className="artist-meta__name">
               {this.props.artist.firstName} {this.props.artist.lastName}
             </h3>
           </div>
         </div>
-      </div>
+      </header>
     );
   }
 }

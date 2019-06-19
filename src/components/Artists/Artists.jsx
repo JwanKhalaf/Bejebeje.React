@@ -12,7 +12,7 @@ function Artists(props) {
 
   return (
     <>
-      <Header title="Browse artists" />
+      <Header title="Browse" />
       <ul className="artist-list">
         {props.artists.map(artist => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
@@ -33,7 +33,6 @@ function Artists(props) {
           );
         })}
       </ul>
-      <Search search={props.search} />
     </>
   );
 }

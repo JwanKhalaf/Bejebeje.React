@@ -17,3 +17,9 @@
   font-size: 1.2rem;
   font-family: "Roboto", sans-serif;
 }
+
+.artist-meta__name {
+  color: #4f4b52;
+  font-family: "Roboto", sans-serif;
+  font-size: 3rem;
+}
