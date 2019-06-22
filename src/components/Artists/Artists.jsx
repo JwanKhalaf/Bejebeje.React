@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./Artists.css";
-import Search from "../Search/Search";
 
 function Artists(props) {
   const getPrimaryArtistSlug = slugs => {

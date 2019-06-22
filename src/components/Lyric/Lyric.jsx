@@ -1,66 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
 import "./lyric.css";
 
-class Lyric extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      lyricIsLoaded: false,
-      artistIsLoaded: false,
-      lyric: null,
-      artist: null
-    };
+const createMarkup = lyric => {
+  return { __html: lyric.body };
+};
 
-    console.log(this.props);
-  }
+function Lyric(props) {
+  const [lyric, setLyric] = useState({});
+  const [artist, setArtist] = useState({});
 
-  componentDidMount() {
-    const artistSlug = this.props.artistSlug;
-    const lyricSlug = this.props.lyricSlug;
+  useEffect(() => {
+    const artistSlug = props.artistSlug;
+    const lyricSlug = props.lyricSlug;
 
     axios.get(API_CONSTANTS.singleLyric(artistSlug, lyricSlug)).then(result => {
-      this.setState({
-        lyricIsLoaded: true,
-        lyric: result.data
-      });
+      setLyric(result.data);
     });
 
     axios.get(API_CONSTANTS.singleArtist(artistSlug)).then(result => {
-      this.setState({
-        artistIsLoaded: true,
-        artist: result.data
-      });
+      setArtist(result.data);
     });
-  }
+  });
 
-  createMarkup() {
-    return { __html: this.state.lyric.body };
-  }
-
-  render() {
-    const { error, lyricIsLoaded, artistIsLoaded, artist } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!lyricIsLoaded && artistIsLoaded) {
-      return <LyricHeader artist={artist} />;
-    } else if (lyricIsLoaded && artistIsLoaded) {
-      return (
-        <>
-          <LyricHeader artist={artist} />
-          <div
-            className="is-lyric"
-            dangerouslySetInnerHTML={this.createMarkup()}
-          />
-        </>
-      );
-    } else {
-      return <h2>not loaded!</h2>;
-    }
-  }
+  return (
+    <>
+      <LyricHeader artist={artist} />
+      <div className="is-lyric" dangerouslySetInnerHTML={createMarkup(lyric)} />
+    </>
+  );
 }
 
 export default Lyric;
