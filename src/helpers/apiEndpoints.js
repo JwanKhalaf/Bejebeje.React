@@ -6,7 +6,8 @@ const API_ROOT_URI =
   process.env.NODE_ENV === "development" ? LOCALHOST_URI : PROD_URI;
 
 export const API_CONSTANTS = {
-  artists: `${API_ROOT_URI}/artists`,
+  artists: (offset, limit) =>
+    `${API_ROOT_URI}/artists?offset=${offset}&limit=${limit}`,
   singleArtist: slug => `${API_ROOT_URI}/artists/${slug}`,
   searchArtists: term => `${API_ROOT_URI}/artists?name=${term}`,
   artistLyrics: slug => `${API_ROOT_URI}/artists/${slug}/lyrics`,
