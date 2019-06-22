@@ -12,9 +12,10 @@ import "./App.css";
 function App() {
   const [total, setTotal] = useState(0);
   const artists = useRef([]);
+  const totalArtistRecords = useRef(0);
   const loading = useRef(false);
   const offset = useRef(0);
-  const limit = useRef(10);
+  const limit = 10;
 
   const loadMore = useCallback(() => {
     if (loading.current) {
@@ -22,16 +23,27 @@ function App() {
     }
     loading.current = true;
 
-    axios
-      .get(API_CONSTANTS.artists(offset.current, limit.current))
-      .then(result => {
-        const artistsArray = result.data.artists;
-        artists.current = [...artists.current, ...artistsArray];
-        loading.current = false;
-        setTotal(artists.current.length);
-        offset.current += 10;
-      });
+    axios.get(API_CONSTANTS.artists(offset.current, limit)).then(result => {
+      const artistsArray = result.data.artists;
+      artists.current = [...artists.current, ...artistsArray];
+      loading.current = false;
+      setTotal(artists.current.length);
+      offset.current += 10;
+      totalArtistRecords.current = result.data.paging.total;
+    });
   }, []);
+
+  const renderFooter = () => {
+    if (totalArtistRecords.current === total) {
+      return (
+        <div style={{ padding: "2rem", textAlign: "center" }}>Finished</div>
+      );
+    } else {
+      return (
+        <div style={{ padding: "2rem", textAlign: "center" }}>Loading...</div>
+      );
+    }
+  };
 
   useEffect(() => {
     loadMore();
@@ -44,6 +56,7 @@ function App() {
           path="/"
           artists={artists.current}
           loadMore={loadMore}
+          renderFooter={renderFooter}
           total={total}
         />
         <ArtistLyrics path="artists/:artistSlug/lyrics" />

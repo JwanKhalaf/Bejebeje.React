@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import { Virtuoso } from "react-virtuoso";
+import SimpleBar from "simplebar-react";
 import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
 
@@ -19,18 +20,12 @@ function Artists(props) {
     <>
       <Header title="Browse" />
       <Virtuoso
-        style={{ width: "400px", height: "400px" }}
+        style={{ margin: "15px" }}
         overscan={50}
         totalCount={props.total}
         item={generateArtistCard}
         endReached={() => props.loadMore()}
-        footer={() => {
-          return (
-            <div style={{ padding: "2rem", textAlign: "center" }}>
-              Loading...
-            </div>
-          );
-        }}
+        footer={() => props.renderFooter()}
       />
     </>
   );
