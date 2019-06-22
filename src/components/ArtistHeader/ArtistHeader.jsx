@@ -1,42 +1,39 @@
 import React from "react";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import HeaderLogo from "../HeaderLogo/HeaderLogo";
-import SidebarToggle from "../SidebarToggle/SidebarToggle";
 import "../Header/Header.css";
 import "./ArtistHeader.css";
 
-class ArtistHeader extends React.Component {
-  determineIfWordIsPluralOrNot() {
-    if (this.props.artistLyricCount === 1) {
-      return "Lyric";
-    } else {
-      return "Lyrics";
-    }
+const determineIfWordIsPluralOrNot = lyricCount => {
+  if (lyricCount === 1) {
+    return "Lyric";
+  } else {
+    return "Lyrics";
   }
+};
 
-  render() {
-    return (
-      <header>
-        <h2 className="artist-header__artist-name">
-          {this.props.artist.firstName}
-          <br />
-          {this.props.artist.lastName}
-        </h2>
+function ArtistHeader(props) {
+  return (
+    <header>
+      <h2 className="artist-header__artist-name">
+        {props.artist.firstName}
+        <br />
+        {props.artist.lastName}
+      </h2>
 
-        <div className="artist-meta">
-          <img
-            className="artist-meta__image"
-            src={API_CONSTANTS.image(this.props.artist.slug)}
-            alt={this.props.artist.firstName + " " + this.props.artist.lastName}
-          />
+      <div className="artist-meta">
+        <img
+          className="artist-meta__image"
+          src={API_CONSTANTS.image(props.artist.slug)}
+          alt={props.artist.firstName + " " + props.artist.lastName}
+        />
 
-          <h4 className="artist-meta__lyric-count">
-            {this.props.artistLyricCount} {this.determineIfWordIsPluralOrNot()}
-          </h4>
-        </div>
-      </header>
-    );
-  }
+        <h4 className="artist-meta__lyric-count">
+          {props.artistLyricCount}{" "}
+          {determineIfWordIsPluralOrNot(props.artistLyricCount)}
+        </h4>
+      </div>
+    </header>
+  );
 }
 
 export default ArtistHeader;

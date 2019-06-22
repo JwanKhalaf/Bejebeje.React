@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+.lyric-item {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.lyric-item__link {
+  color: #4f4b52;
+  padding: 15px;
+  display: block;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}

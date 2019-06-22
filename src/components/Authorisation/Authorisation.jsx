@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { UserManager } from "oidc-client";
 
 const defaultConfig = {
@@ -10,13 +10,11 @@ const defaultConfig = {
   post_logout_redirect_uri: process.env.IDENTITY_POST_LOGOUT_REDIRECT_URI
 };
 
-class Authorisation extends React.Component {
-  constructor(props, config) {
-    super(props);
+function Authorisation(props, config) {
+  const userManager = new UserManager({ ...defaultConfig, config });
 
-    this.userManager = new UserManager({ ...defaultConfig, config });
-
-    this.userManager
+  useEffect(() => {
+    userManager
       .signinRedirectCallback()
       .then(() => {
         window.location = "/";
@@ -25,11 +23,9 @@ class Authorisation extends React.Component {
         // eslint-disable-next-line no-console
         console.error(e);
       });
-  }
+  });
 
-  render() {
-    return <h1>hi!</h1>;
-  }
+  return <h1>hi!</h1>;
 }
 
 export default Authorisation;

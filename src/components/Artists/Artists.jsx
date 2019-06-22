@@ -1,9 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
-import { Link } from "@reach/router";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./Artists.css";
-import Search from "../Search/Search";
+import ArtistCard from "../ArtistCard/ArtistCard";
 
 function Artists(props) {
   const getPrimaryArtistSlug = slugs => {
@@ -17,19 +15,11 @@ function Artists(props) {
         {props.artists.map(artist => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
           return (
-            <li key={primarySlug} className="artist-item">
-              <Link
-                to={"artists/" + primarySlug + "/lyrics"}
-                className="artist-item__link"
-              >
-                <img
-                  src={API_CONSTANTS.image(primarySlug)}
-                  alt={artist.firstName + " " + artist.lastName}
-                  className="artist-item__avatar"
-                />
-                {artist.firstName} {artist.lastName}
-              </Link>
-            </li>
+            <ArtistCard
+              key={primarySlug}
+              artist={artist}
+              primarySlug={primarySlug}
+            />
           );
         })}
       </ul>
