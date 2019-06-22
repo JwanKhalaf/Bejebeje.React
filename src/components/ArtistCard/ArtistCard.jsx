@@ -5,7 +5,7 @@ import "./ArtistCard.css";
 
 function ArtistCard(props) {
   return (
-    <li className="artist-item">
+    <div className="artist-item">
       <Link
         to={"artists/" + props.primarySlug + "/lyrics"}
         className="artist-item__link"
@@ -17,7 +17,7 @@ function ArtistCard(props) {
         />
         {props.artist.firstName} {props.artist.lastName}
       </Link>
-    </li>
+    </div>
   );
 }
 

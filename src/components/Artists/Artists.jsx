@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
+import { Virtuoso } from "react-virtuoso";
+import SimpleBar from "simplebar-react";
 import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
 
@@ -8,21 +10,23 @@ function Artists(props) {
     return slugs.filter(slug => slug.isPrimary)[0].name;
   };
 
+  const generateArtistCard = index => {
+    const artist = props.artists[index];
+    const primarySlug = getPrimaryArtistSlug(artist.slugs);
+    return <ArtistCard artist={artist} primarySlug={primarySlug} />;
+  };
+
   return (
     <>
       <Header title="Browse" />
-      <ul className="artist-list">
-        {props.artists.map(artist => {
-          const primarySlug = getPrimaryArtistSlug(artist.slugs);
-          return (
-            <ArtistCard
-              key={primarySlug}
-              artist={artist}
-              primarySlug={primarySlug}
-            />
-          );
-        })}
-      </ul>
+      <Virtuoso
+        style={{ margin: "15px" }}
+        overscan={50}
+        totalCount={props.total}
+        item={generateArtistCard}
+        endReached={() => props.loadMore()}
+        footer={() => props.renderFooter()}
+      />
     </>
   );
 }

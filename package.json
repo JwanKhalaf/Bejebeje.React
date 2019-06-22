@@ -12,7 +12,8 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-icons": "^3.7.0",
-    "react-pose": "^4.0.8"
+    "react-pose": "^4.0.8",
+    "react-virtuoso": "^0.7.0"
   },
   "scripts": {
     "dev": "parcel src/index.html",
