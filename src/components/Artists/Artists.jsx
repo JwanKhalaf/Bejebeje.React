@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
 import { Virtuoso } from "react-virtuoso";
-import SimpleBar from "simplebar-react";
 import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
 
