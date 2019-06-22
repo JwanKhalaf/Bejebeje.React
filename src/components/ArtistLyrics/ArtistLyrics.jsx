@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
-import { Link } from "@reach/router";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./ArtistLyrics.css";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
+import LyricCard from "../LyricCard/LyricCard";
+import NavigateBack from "../NavigateBack/NavigateBack";
 
 function ArtistLyrics(props) {
   const [lyrics, setLyrics] = useState([]);
@@ -38,30 +39,13 @@ function ArtistLyrics(props) {
     );
   }
 
-  if (artist && lyrics.length === 0) {
-    return (
-      <>
-        <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
-        <div className="info-text__wrap">
-          <h2 className="info-text__heading">Sorry!</h2>
-          <h3 className="info-text__body">
-            No lyrics have been submitted yet.
-          </h3>
-        </div>
-      </>
-    );
-  }
-
   return (
     <>
+      <NavigateBack to="/" />
       <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
       <ul className="lyrics-list">
         {lyrics.map(lyric => (
-          <li key={lyric.slug} className="lyric-item">
-            <Link to={lyric.slug} className="lyric-item__link">
-              {lyric.title}
-            </Link>
-          </li>
+          <LyricCard key={lyric.slug} lyric={lyric} />
         ))}
       </ul>
     </>

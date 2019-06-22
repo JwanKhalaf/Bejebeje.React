@@ -1,36 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
-
 .artist-list {
   list-style: none;
   padding: 0 15px;
-}
-
-.artist-item {
-  background-color: #ffffff;
-  margin-bottom: 20px;
-  overflow: hidden;
-  border-radius: 5px;
-  /* border: 2px solid #c5c5c5; */
-}
-
-.artist-item__link {
-  color: #4f4b52;
-  padding: 15px;
-  display: block;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-}
-
-.artist-item__avatar {
-  display: block;
-  margin-right: 15px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 4px #888888;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
+import NavigateBack from "../NavigateBack/NavigateBack";
 import "./lyric.css";
 
 const createMarkup = lyric => {
@@ -27,8 +28,9 @@ function Lyric(props) {
 
   return (
     <>
+      <NavigateBack to="/" />
       <LyricHeader artist={artist} />
-      <div className="is-lyric" dangerouslySetInnerHTML={createMarkup(lyric)} />
+      <div className="lyric" dangerouslySetInnerHTML={createMarkup(lyric)} />
     </>
   );
 }
