@@ -1,4 +1,6 @@
-.artist-list {
-  list-style: none;
-  padding: 0 15px;
+.artists__container::-webkit-scrollbar {
+  width: 0 !important;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  background: transparent;
 }

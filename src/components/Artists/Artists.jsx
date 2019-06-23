@@ -25,6 +25,7 @@ function Artists(props) {
         item={generateArtistCard}
         endReached={() => props.loadMore()}
         footer={() => props.renderFooter()}
+        className="artists__container"
       />
     </>
   );
