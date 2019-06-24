@@ -14,6 +14,10 @@ function App() {
   const offset = useRef(0);
   const limit = 10;
 
+  const callback = entries => {
+    console.log(entries);
+  };
+
   useEffect(() => {
     axios.get(API_CONSTANTS.artists(offset.current, limit)).then(result => {
       const artistsArray = result.data.artists;
@@ -24,7 +28,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Artists path="/" artists={artists} />
+        <Artists path="/" artists={artists} intersectionCallback={callback} />
         <ArtistLyrics path="artists/:artistSlug/lyrics" />
         <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
         <Authorisation path="/callback" />

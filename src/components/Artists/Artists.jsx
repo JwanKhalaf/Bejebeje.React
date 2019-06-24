@@ -8,13 +8,24 @@ function Artists(props) {
     return slugs.filter(slug => slug.isPrimary)[0].name;
   };
 
+  const observer = new IntersectionObserver(props.intersectionCallback, {
+    root: null,
+    threshold: 0.8
+  });
+
   return (
     <>
       <Header title="Browse" />
       <div className="artists__list">
-        {props.artists.map(artist => {
+        {props.artists.map((artist, index) => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
-          return <ArtistCard artist={artist} primarySlug={primarySlug} />;
+          const artistCard = artist => {
+            return <ArtistCard artist={artist} primarySlug={primarySlug} />;
+          };
+          if (index === 8) {
+            observer.observe(artistCard);
+          }
+          return artistCard;
         })}
       </div>
     </>
