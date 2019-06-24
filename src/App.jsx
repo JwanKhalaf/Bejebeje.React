@@ -10,55 +10,21 @@ import { API_CONSTANTS } from "./helpers/apiEndpoints";
 import "./App.css";
 
 function App() {
-  const [total, setTotal] = useState(0);
-  const artists = useRef([]);
-  const totalArtistRecords = useRef(0);
-  const loading = useRef(false);
+  const [artists, setArtists] = useState([]);
   const offset = useRef(0);
   const limit = 10;
 
-  const loadMore = useCallback(() => {
-    if (loading.current) {
-      return;
-    }
-    loading.current = true;
-
+  useEffect(() => {
     axios.get(API_CONSTANTS.artists(offset.current, limit)).then(result => {
       const artistsArray = result.data.artists;
-      artists.current = [...artists.current, ...artistsArray];
-      loading.current = false;
-      setTotal(artists.current.length);
-      offset.current += 10;
-      totalArtistRecords.current = result.data.paging.total;
+      setArtists(artistsArray);
     });
-  }, []);
-
-  const renderFooter = () => {
-    if (totalArtistRecords.current === total) {
-      return (
-        <div style={{ padding: "2rem", textAlign: "center" }}>Finished</div>
-      );
-    } else {
-      return (
-        <div style={{ padding: "2rem", textAlign: "center" }}>Loading...</div>
-      );
-    }
-  };
-
-  useEffect(() => {
-    loadMore();
   }, []);
 
   return (
     <div>
       <Router>
-        <Artists
-          path="/"
-          artists={artists.current}
-          loadMore={loadMore}
-          renderFooter={renderFooter}
-          total={total}
-        />
+        <Artists path="/" artists={artists} />
         <ArtistLyrics path="artists/:artistSlug/lyrics" />
         <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
         <Authorisation path="/callback" />
