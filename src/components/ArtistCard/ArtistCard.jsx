@@ -5,7 +5,7 @@ import "./ArtistCard.css";
 
 function ArtistCard(props) {
   return (
-    <li className="artist-item">
+    <li className="artist-item" ref={props.itemRef}>
       <Link
         to={"artists/" + props.primarySlug + "/lyrics"}
         className="artist-item__link"
