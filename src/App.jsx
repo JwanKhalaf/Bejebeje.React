@@ -15,7 +15,9 @@ function App() {
   const limit = 10;
 
   const callback = entries => {
-    console.log(entries);
+    if (entries[0].isIntersecting) {
+      console.log("You should call API to load more.");
+    }
   };
 
   useEffect(() => {

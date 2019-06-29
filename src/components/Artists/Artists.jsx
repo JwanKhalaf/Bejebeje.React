@@ -8,8 +8,8 @@ function Artists(props) {
     return slugs.filter(slug => slug.isPrimary)[0].name;
   };
 
-  const singleRefs = props.artists.reduce((acc, value) => {
-    acc[getPrimaryArtistSlug(value.slugs)] = React.createRef();
+  const singleRefs = props.artists.reduce((acc, value, index) => {
+    acc[index] = React.createRef();
     return acc;
   }, {});
 
@@ -21,7 +21,8 @@ function Artists(props) {
   useEffect(() => {
     console.log("useEffect is called.");
     if (props.artists.length > 0) {
-      observer.observe(singleRefs["howling-wolf"].current);
+      const indexOfLastArtist = props.artists.length - 2;
+      observer.observe(singleRefs[indexOfLastArtist].current);
     }
   }, [props.artists]);
 
@@ -29,14 +30,14 @@ function Artists(props) {
     <>
       <Header title="Browse" />
       <div className="artists__list">
-        {props.artists.map(artist => {
+        {props.artists.map((artist, index) => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
           return (
             <ArtistCard
               key={primarySlug}
               artist={artist}
               primarySlug={primarySlug}
-              itemRef={singleRefs[primarySlug]}
+              itemRef={singleRefs[index]}
             />
           );
         })}
