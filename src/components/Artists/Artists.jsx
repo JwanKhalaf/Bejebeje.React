@@ -6,11 +6,15 @@ import ArtistCard from "../ArtistCard/ArtistCard";
 function Artists(props) {
   const intersectionObserver = useRef(null);
 
+  const artistCardReferences = useRef(null);
+
+  const totalNumberOfArtists = props.totalArtists;
+
   const getPrimaryArtistSlug = slugs => {
     return slugs.filter(slug => slug.isPrimary)[0].name;
   };
 
-  const singleRefs = props.artists.reduce((acc, value, index) => {
+  artistCardReferences.current = props.artists.reduce((acc, value, index) => {
     acc[index] = React.createRef();
     return acc;
   }, {});
@@ -25,20 +29,24 @@ function Artists(props) {
     );
 
     if (props.artists.length > 0) {
-      console.log(singleRefs);
       const indexOfLastArtist = props.artists.length - 2;
-      const targetElement = singleRefs[indexOfLastArtist].current;
-      console.log(targetElement);
+      const targetElement =
+        artistCardReferences.current[indexOfLastArtist].current;
+
       intersectionObserver.current.observe(targetElement);
     }
 
     return () => {
       if (props.artists.length > 0) {
-        console.log(singleRefs);
         const indexOfLastArtist = props.artists.length - 2;
-        const targetElement = singleRefs[indexOfLastArtist].current;
-        console.log(targetElement);
+        const targetElement =
+          artistCardReferences.current[indexOfLastArtist].current;
+
         intersectionObserver.current.unobserve(targetElement);
+
+        if (props.artists.length === totalNumberOfArtists) {
+          intersectionObserver.current.disconnect();
+        }
       }
     };
   }, [props.artists]);
@@ -54,7 +62,7 @@ function Artists(props) {
               key={primarySlug}
               artist={artist}
               primarySlug={primarySlug}
-              itemRef={singleRefs[index]}
+              itemRef={artistCardReferences.current[index]}
             />
           );
         })}

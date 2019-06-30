@@ -11,18 +11,15 @@ import "./App.css";
 
 function App() {
   const [artists, setArtists] = useState([]);
+  const totalNumberOfArtists = useRef(0);
   const offset = useRef(0);
   const limit = 10;
 
   const callback = entries => {
-    console.log(
-      `Intersection callback fired. isIntersecting is ${
-        entries[0].isIntersecting
-      }.`
-    );
     if (entries[0].isIntersecting) {
-      console.log("about to fetch artists ...");
-      fetchArtists(offset, limit);
+      if (artists.length !== totalNumberOfArtists) {
+        fetchArtists(offset, limit);
+      }
     }
   };
 
@@ -31,6 +28,7 @@ function App() {
       const artistsArray = result.data.artists;
       setArtists([...artists, ...artistsArray]);
       offset.current += artistsArray.length;
+      totalNumberOfArtists.current = result.data.paging.total;
       console.log(`offset is now at ${offset.current}.`);
     });
   };
@@ -42,7 +40,12 @@ function App() {
   return (
     <div>
       <Router>
-        <Artists path="/" artists={artists} intersectionCallback={callback} />
+        <Artists
+          path="/"
+          artists={artists}
+          intersectionCallback={callback}
+          totalArtists={totalNumberOfArtists.current}
+        />
         <ArtistLyrics path="artists/:artistSlug/lyrics" />
         <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
         <Authorisation path="/callback" />
