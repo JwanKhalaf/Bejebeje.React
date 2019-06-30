@@ -4,6 +4,8 @@ import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
 
 function Artists(props) {
+  const intersectionObserver = useRef(null);
+
   const getPrimaryArtistSlug = slugs => {
     return slugs.filter(slug => slug.isPrimary)[0].name;
   };
@@ -13,16 +15,20 @@ function Artists(props) {
     return acc;
   }, {});
 
-  const observer = new IntersectionObserver(props.intersectionCallback, {
-    root: null,
-    threshold: 0.8
-  });
-
   useEffect(() => {
+    intersectionObserver.current = new IntersectionObserver(
+      props.intersectionCallback,
+      {
+        root: null,
+        threshold: 0.8
+      }
+    );
+
     if (props.artists.length > 0) {
       const indexOfLastArtist = props.artists.length - 2;
-      observer.observe(singleRefs[indexOfLastArtist].current);
-      const entries = observer.takeRecords();
+      intersectionObserver.current.observe(
+        singleRefs[indexOfLastArtist].current
+      );
     }
   }, [props.artists]);
 
