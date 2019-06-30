@@ -15,7 +15,11 @@ function App() {
   const limit = 10;
 
   const callback = entries => {
-    console.log(`Intersection callback fired`);
+    console.log(
+      `Intersection callback fired. isIntersecting is ${
+        entries[0].isIntersecting
+      }.`
+    );
     if (entries[0].isIntersecting) {
       console.log("about to fetch artists ...");
       fetchArtists(offset, limit);
