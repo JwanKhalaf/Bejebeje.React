@@ -16,15 +16,20 @@ function App() {
 
   const callback = entries => {
     if (entries[0].isIntersecting) {
-      console.log("You should call API to load more.");
+      fetchArtists(offset, limit);
     }
   };
 
-  useEffect(() => {
+  const fetchArtists = (offset, limit) => {
     axios.get(API_CONSTANTS.artists(offset.current, limit)).then(result => {
       const artistsArray = result.data.artists;
-      setArtists(artistsArray);
+      setArtists([...artists, ...artistsArray]);
+      offset.current += artistsArray.length;
     });
+  };
+
+  useEffect(() => {
+    fetchArtists(offset, limit);
   }, []);
 
   return (
