@@ -25,11 +25,22 @@ function Artists(props) {
     );
 
     if (props.artists.length > 0) {
+      console.log(singleRefs);
       const indexOfLastArtist = props.artists.length - 2;
-      intersectionObserver.current.observe(
-        singleRefs[indexOfLastArtist].current
-      );
+      const targetElement = singleRefs[indexOfLastArtist].current;
+      console.log(targetElement);
+      intersectionObserver.current.observe(targetElement);
     }
+
+    return () => {
+      if (props.artists.length > 0) {
+        console.log(singleRefs);
+        const indexOfLastArtist = props.artists.length - 2;
+        const targetElement = singleRefs[indexOfLastArtist].current;
+        console.log(targetElement);
+        intersectionObserver.current.unobserve(targetElement);
+      }
+    };
   }, [props.artists]);
 
   return (
