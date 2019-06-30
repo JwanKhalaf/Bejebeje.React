@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "../Header/Header";
-import { Virtuoso } from "react-virtuoso";
 import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
 
@@ -9,24 +8,40 @@ function Artists(props) {
     return slugs.filter(slug => slug.isPrimary)[0].name;
   };
 
-  const generateArtistCard = index => {
-    const artist = props.artists[index];
-    const primarySlug = getPrimaryArtistSlug(artist.slugs);
-    return <ArtistCard artist={artist} primarySlug={primarySlug} />;
-  };
+  const singleRefs = props.artists.reduce((acc, value, index) => {
+    acc[index] = React.createRef();
+    return acc;
+  }, {});
+
+  const observer = new IntersectionObserver(props.intersectionCallback, {
+    root: null,
+    threshold: 0.8
+  });
+
+  useEffect(() => {
+    console.log("useEffect is called.");
+    if (props.artists.length > 0) {
+      const indexOfLastArtist = props.artists.length - 2;
+      observer.observe(singleRefs[indexOfLastArtist].current);
+    }
+  }, [props.artists]);
 
   return (
     <>
       <Header title="Browse" />
-      <Virtuoso
-        style={{ margin: "15px" }}
-        overscan={50}
-        totalCount={props.total}
-        item={generateArtistCard}
-        endReached={() => props.loadMore()}
-        footer={() => props.renderFooter()}
-        className="artists__container"
-      />
+      <div className="artists__list">
+        {props.artists.map((artist, index) => {
+          const primarySlug = getPrimaryArtistSlug(artist.slugs);
+          return (
+            <ArtistCard
+              key={primarySlug}
+              artist={artist}
+              primarySlug={primarySlug}
+              itemRef={singleRefs[index]}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }
