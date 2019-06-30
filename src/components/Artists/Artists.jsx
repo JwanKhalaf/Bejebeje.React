@@ -19,10 +19,10 @@ function Artists(props) {
   });
 
   useEffect(() => {
-    console.log("useEffect is called.");
     if (props.artists.length > 0) {
       const indexOfLastArtist = props.artists.length - 2;
       observer.observe(singleRefs[indexOfLastArtist].current);
+      const entries = observer.takeRecords();
     }
   }, [props.artists]);
 

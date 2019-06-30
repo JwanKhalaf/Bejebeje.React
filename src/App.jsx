@@ -15,7 +15,9 @@ function App() {
   const limit = 10;
 
   const callback = entries => {
+    console.log(`Intersection callback fired`);
     if (entries[0].isIntersecting) {
+      console.log("about to fetch artists ...");
       fetchArtists(offset, limit);
     }
   };
@@ -25,6 +27,7 @@ function App() {
       const artistsArray = result.data.artists;
       setArtists([...artists, ...artistsArray]);
       offset.current += artistsArray.length;
+      console.log(`offset is now at ${offset.current}.`);
     });
   };
 
