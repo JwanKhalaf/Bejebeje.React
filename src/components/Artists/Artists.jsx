@@ -28,7 +28,10 @@ function Artists(props) {
       }
     );
 
-    if (props.artists.length > 0) {
+    if (
+      props.artists.length > 0 &&
+      props.artists.length !== totalNumberOfArtists
+    ) {
       const indexOfLastArtist = props.artists.length - 2;
       const targetElement =
         artistCardReferences.current[indexOfLastArtist].current;
