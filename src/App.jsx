@@ -29,7 +29,6 @@ function App() {
       setArtists([...artists, ...artistsArray]);
       offset.current += artistsArray.length;
       totalNumberOfArtists.current = result.data.paging.total;
-      console.log(`offset is now at ${offset.current}.`);
     });
   };
 
