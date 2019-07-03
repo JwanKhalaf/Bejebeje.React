@@ -17,13 +17,17 @@ function Lyric(props) {
     const artistSlug = props.artistSlug;
     const lyricSlug = props.lyricSlug;
 
-    axios.get(API_CONSTANTS.singleLyric(artistSlug, lyricSlug)).then(result => {
-      setLyric(result.data);
-    });
-
-    axios.get(API_CONSTANTS.singleArtist(artistSlug)).then(result => {
-      setArtist(result.data);
-    });
+    axios
+      .all([
+        axios.get(API_CONSTANTS.singleArtist(artistSlug)),
+        axios.get(API_CONSTANTS.singleLyric(artistSlug, lyricSlug))
+      ])
+      .then(
+        axios.spread((artistResponse, lyricResponse) => {
+          setArtist(artistResponse.data);
+          setLyric(lyricResponse.data);
+        })
+      );
   }, []);
 
   return (
