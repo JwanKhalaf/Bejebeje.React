@@ -3,5 +3,6 @@ export const APP_COLOURS = {
   red: "#C5101E",
   grey: "#505050",
   olive: "#A7B7AC",
-  wheat: "#E8E2DB"
+  wheat: "#E8E2DB",
+  yellow: "#FAB95B"
 };
