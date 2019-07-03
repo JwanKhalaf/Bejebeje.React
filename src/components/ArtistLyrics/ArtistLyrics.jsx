@@ -43,11 +43,11 @@ function ArtistLyrics(props) {
     <>
       <NavigateBack to="/" />
       <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
-      <ul className="lyrics-list">
+      <main className="lyrics">
         {lyrics.map(lyric => (
           <LyricCard key={lyric.slug} lyric={lyric} />
         ))}
-      </ul>
+      </main>
     </>
   );
 }

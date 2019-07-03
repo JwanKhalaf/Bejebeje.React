@@ -4,11 +4,11 @@ import "./LyricCard.css";
 
 function LyricCard(props) {
   return (
-    <li className="lyric-item">
-      <Link to={props.lyric.slug} className="lyric-item__link">
+    <div className="lyric-card">
+      <Link to={props.lyric.slug} className="lyric-card__link">
         {props.lyric.title}
       </Link>
-    </li>
+    </div>
   );
 }
 

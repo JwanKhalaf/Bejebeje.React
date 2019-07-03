@@ -30,7 +30,7 @@ function Lyric(props) {
     <>
       <NavigateBack to="/" />
       <LyricHeader artist={artist} />
-      <div className="lyric" dangerouslySetInnerHTML={createMarkup(lyric)} />
+      <main className="lyric" dangerouslySetInnerHTML={createMarkup(lyric)} />
     </>
   );
 }

@@ -5,19 +5,19 @@ import "./ArtistCard.css";
 
 function ArtistCard(props) {
   return (
-    <li className="artist-item" ref={props.itemRef}>
+    <div className="artist-card" ref={props.itemRef}>
       <Link
         to={"artists/" + props.primarySlug + "/lyrics"}
-        className="artist-item__link"
+        className="artist-card__link"
       >
         <img
           src={API_CONSTANTS.image(props.primarySlug)}
           alt={props.artist.firstName + " " + props.artist.lastName}
-          className="artist-item__avatar"
+          className="artist-card__avatar"
         />
         {props.artist.firstName} {props.artist.lastName}
       </Link>
-    </li>
+    </div>
   );
 }
 

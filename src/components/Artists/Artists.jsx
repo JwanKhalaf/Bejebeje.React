@@ -57,7 +57,7 @@ function Artists(props) {
   return (
     <>
       <Header title="Browse" />
-      <div className="artists__list">
+      <main className="artists">
         {props.artists.map((artist, index) => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
           return (
@@ -69,7 +69,7 @@ function Artists(props) {
             />
           );
         })}
-      </div>
+      </main>
     </>
   );
 }

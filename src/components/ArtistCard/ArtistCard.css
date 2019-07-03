@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
-.artist-item {
+.artist-card {
   background-color: #ffffff;
   margin-bottom: 20px;
   overflow: hidden;
   border-radius: 5px;
-  /* border: 2px solid #c5c5c5; */
 }
 
-.artist-item__link {
+.artist-card__link {
   color: #4f4b52;
   padding: 15px;
   display: block;
@@ -20,7 +19,7 @@
   font-weight: bold;
 }
 
-.artist-item__avatar {
+.artist-card__avatar {
   display: block;
   margin-right: 15px;
   width: 40px;
