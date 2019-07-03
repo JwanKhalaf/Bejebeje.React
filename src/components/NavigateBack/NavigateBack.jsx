@@ -4,7 +4,9 @@ import { FaArrowLeft } from "react-icons/fa";
 import styled from "styled-components";
 
 const BackArrow = styled(Link)`
+  display: block;
   color: #ffffff;
+  margin-bottom: 30px;
 `;
 
 const Icon = styled(FaArrowLeft)`

@@ -14,8 +14,6 @@ const determineIfWordIsPluralOrNot = lyricCount => {
 };
 
 const ArtistName = styled.h2`
-  @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
-
   font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 3.33rem;

@@ -1,13 +1,30 @@
-import React, { useRef, useCallback, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Router } from "@reach/router";
+import { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import Authorisation from "./components/Authorisation/Authorisation";
 import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
-import "./App.css";
+import { APP_COLOURS } from "./helpers/appColours";
+
+const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: ${APP_COLOURS.wheat};
+  }
+`;
 
 function App() {
   const [artists, setArtists] = useState([]);
@@ -38,6 +55,7 @@ function App() {
 
   return (
     <div>
+      <GlobalStyle />
       <Router>
         <Artists
           path="/"

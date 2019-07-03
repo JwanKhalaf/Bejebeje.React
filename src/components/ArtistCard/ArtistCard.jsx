@@ -7,18 +7,20 @@ import { APP_COLOURS } from "../../helpers/appColours";
 const Card = styled.div`
   background-color: ${APP_COLOURS.darkPurple};
   margin-bottom: 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
 `;
 
 const ArtistLink = styled(Link)`
-  @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
-
+  height: 100%;
+  width: 100%;
   color: #ffffff;
   padding: 15px;
   display: block;
-  height: 100%;
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1.33rem;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
 `;
@@ -35,14 +37,10 @@ const ArtistImage = styled.img`
 function ArtistCard(props) {
   return (
     <Card ref={props.itemRef}>
-      <ArtistLink
-        to={"artists/" + props.primarySlug + "/lyrics"}
-        className="artist-card__link"
-      >
+      <ArtistLink to={"artists/" + props.primarySlug + "/lyrics"}>
         <ArtistImage
           src={API_CONSTANTS.image(props.primarySlug)}
           alt={props.artist.firstName + " " + props.artist.lastName}
-          className="artist-card__avatar"
         />
         {props.artist.firstName} {props.artist.lastName}
       </ArtistLink>

@@ -7,7 +7,7 @@ import Title from "../Title/Title";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 const ArtistsContainer = styled.main`
-  padding: 20px 0 0 20px;
+  padding: 25px 0 0 20px;
 `;
 
 function Artists(props) {
