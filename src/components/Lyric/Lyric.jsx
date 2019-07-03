@@ -24,7 +24,7 @@ function Lyric(props) {
     axios.get(API_CONSTANTS.singleArtist(artistSlug)).then(result => {
       setArtist(result.data);
     });
-  });
+  }, []);
 
   return (
     <>
