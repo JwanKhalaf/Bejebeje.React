@@ -9,6 +9,7 @@ import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
 import { APP_COLOURS } from "./helpers/appColours";
+import Search from "./components/Search/Search";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
@@ -67,6 +68,7 @@ function App() {
         <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
         <Authorisation path="/callback" />
       </Router>
+      <Search />
     </div>
   );
 }

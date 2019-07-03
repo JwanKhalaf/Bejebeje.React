@@ -1,84 +1,32 @@
 import React from "react";
-import posed from "react-pose";
-import "./Search.css";
+import styled from "styled-components";
+import { FaSearch } from "react-icons/fa";
+import { APP_COLOURS } from "../../helpers/appColours";
 
-const SearchButton = posed.div({
-  active: {
-    width: 600,
-    borderRadius: 3
-    // transition: { duration: 20000 }
-  },
-  inactive: {
-    width: 68,
-    borderRadius: 50
-    // transition: { duration: 20000 }
-  }
-});
+const SearchButton = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: ${APP_COLOURS.yellow};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
 
-const SearchInput = posed.input({
-  active: {
-    width: 600,
-    padding: 15
-  },
-  inactive: {
-    width: 0,
-    padding: 0
-  }
-});
+const Icon = styled(FaSearch)`
+  font-size: 1.5rem;
+  color: #ffffff;
+`;
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.searchInput = React.createRef();
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
-    this.state = {
-      query: "",
-      isActive: false
-    };
-  }
-
-  handleSearchButtonClick(event) {
-    event.preventDefault();
-    this.setState({
-      isActive: !this.state.isActive
-    });
-    this.searchInput.current.focus();
-  }
-
-  handleInputChange(event) {
-    this.props.search(event.target.value);
-  }
-
-  render() {
-    const { isActive } = this.state;
-    return (
-      <SearchButton
-        className="search__wrap"
-        pose={isActive ? "active" : "inactive"}
-      >
-        <form className="search__form">
-          <label className="search__label" htmlFor="search">
-            Search
-          </label>
-          <SearchInput
-            type="text"
-            className="search__input"
-            onChange={this.handleInputChange}
-            ref={this.searchInput}
-            id="search"
-          />
-          <button
-            className="search__button"
-            onClick={this.handleSearchButtonClick}
-            aria-label="Search"
-          >
-            <i className="fal fa-search search__icon" />
-          </button>
-        </form>
-      </SearchButton>
-    );
-  }
+function Search(props) {
+  return (
+    <SearchButton>
+      <Icon />
+    </SearchButton>
+  );
 }
 
 export default Search;
