@@ -1,14 +1,21 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { FaArrowLeft } from "react-icons/fa";
-import "./NavigateBack.css";
+import styled from "styled-components";
+
+const BackArrow = styled(Link)`
+  color: #ffffff;
+`;
+
+const Icon = styled(FaArrowLeft)`
+  font-size: 2rem;
+`;
 
 function NavigateBack(props) {
   return (
-    <Link to={props.to} className="nav__link">
-      <FaArrowLeft className="nav__icon" />
-      Back
-    </Link>
+    <BackArrow to={props.to}>
+      <Icon />
+    </BackArrow>
   );
 }
 

@@ -5,7 +5,6 @@ import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import "./ArtistLyrics.css";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
 import LyricCard from "../LyricCard/LyricCard";
-import NavigateBack from "../NavigateBack/NavigateBack";
 
 function ArtistLyrics(props) {
   const [lyrics, setLyrics] = useState([]);
@@ -41,7 +40,6 @@ function ArtistLyrics(props) {
 
   return (
     <>
-      <NavigateBack to="/" />
       <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
       <main className="lyrics">
         {lyrics.map(lyric => (

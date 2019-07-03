@@ -1,7 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "../Header/Header.css";
-import "./ArtistHeader.css";
+import Header from "../Header/Header";
+import { APP_SECTIONS } from "../../helpers/appSections";
+import NavigateBack from "../NavigateBack/NavigateBack";
 
 const determineIfWordIsPluralOrNot = lyricCount => {
   if (lyricCount === 1) {
@@ -11,28 +13,58 @@ const determineIfWordIsPluralOrNot = lyricCount => {
   }
 };
 
+const ArtistName = styled.h2`
+  @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 3.33rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+`;
+
+const ArtistMetaInformation = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ArtistImage = styled.img`
+  width: 70px;
+  height: 70px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  margin-right: 20px;
+`;
+
+const LyricCount = styled.h4`
+  font-family: "Roboto", sans-serif;
+  font-size: 1.33rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: normal;
+`;
+
 function ArtistHeader(props) {
   return (
-    <header>
-      <h2 className="artist-header__artist-name">
+    <Header section={APP_SECTIONS.artist}>
+      <NavigateBack to="/" />
+      <ArtistName>
         {props.artist.firstName}
         <br />
         {props.artist.lastName}
-      </h2>
+      </ArtistName>
 
-      <div className="artist-meta">
-        <img
-          className="artist-meta__image"
+      <ArtistMetaInformation>
+        <ArtistImage
           src={API_CONSTANTS.image(props.artist.slug)}
           alt={props.artist.firstName + " " + props.artist.lastName}
         />
 
-        <h4 className="artist-meta__lyric-count">
+        <LyricCount>
           {props.artistLyricCount}{" "}
           {determineIfWordIsPluralOrNot(props.artistLyricCount)}
-        </h4>
-      </div>
-    </header>
+        </LyricCount>
+      </ArtistMetaInformation>
+    </Header>
   );
 }
 

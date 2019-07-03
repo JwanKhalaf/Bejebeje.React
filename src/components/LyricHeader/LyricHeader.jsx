@@ -1,6 +1,5 @@
 import React from "react";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "../Header/Header.css";
 import "./LyricHeader.css";
 
 function LyricHeader(props) {

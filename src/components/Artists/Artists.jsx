@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from "react";
 import Header from "../Header/Header";
 import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
+import { APP_SECTIONS } from "../../helpers/appSections";
+import Title from "../Title/Title";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 function Artists(props) {
   const intersectionObserver = useRef(null);
@@ -56,7 +59,10 @@ function Artists(props) {
 
   return (
     <>
-      <Header title="Browse" />
+      <Header section={APP_SECTIONS.home}>
+        <HeaderLogo />
+        <Title text="Browse" />
+      </Header>
       <main className="artists">
         {props.artists.map((artist, index) => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
