@@ -1,7 +1,14 @@
 import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
 import Header from "../Header/Header";
-import "./Artists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
+import { APP_SECTIONS } from "../../helpers/appSections";
+import Title from "../Title/Title";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
+
+const ArtistsContainer = styled.main`
+  padding: 25px 0 0 20px;
+`;
 
 function Artists(props) {
   const intersectionObserver = useRef(null);
@@ -56,8 +63,11 @@ function Artists(props) {
 
   return (
     <>
-      <Header title="Browse" />
-      <main className="artists">
+      <Header section={APP_SECTIONS.home}>
+        <HeaderLogo />
+        <Title text="Browse" />
+      </Header>
+      <ArtistsContainer>
         {props.artists.map((artist, index) => {
           const primarySlug = getPrimaryArtistSlug(artist.slugs);
           return (
@@ -69,7 +79,7 @@ function Artists(props) {
             />
           );
         })}
-      </main>
+      </ArtistsContainer>
     </>
   );
 }

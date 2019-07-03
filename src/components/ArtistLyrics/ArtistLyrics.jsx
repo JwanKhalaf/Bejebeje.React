@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
+import styled from "styled-components";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import "./ArtistLyrics.css";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
 import LyricCard from "../LyricCard/LyricCard";
-import NavigateBack from "../NavigateBack/NavigateBack";
+
+const LyricsContainer = styled.main`
+  padding: 25px 0 0 20px;
+`;
 
 function ArtistLyrics(props) {
   const [lyrics, setLyrics] = useState([]);
@@ -41,13 +44,12 @@ function ArtistLyrics(props) {
 
   return (
     <>
-      <NavigateBack to="/" />
       <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
-      <main className="lyrics">
+      <LyricsContainer className="lyrics">
         {lyrics.map(lyric => (
           <LyricCard key={lyric.slug} lyric={lyric} />
         ))}
-      </main>
+      </LyricsContainer>
     </>
   );
 }

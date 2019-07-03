@@ -1,11 +1,27 @@
 import React from "react";
-import "./Header.css";
+import styled from "styled-components";
+import { APP_SECTIONS } from "../../helpers/appSections";
+import { APP_COLOURS } from "../../helpers/appColours";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
+
+const HeaderContainer = styled.header`
+  background-color: ${props => {
+    if (props.section === APP_SECTIONS.home) {
+      return APP_COLOURS.red;
+    } else if (props.section === APP_SECTIONS.artist) {
+      return APP_COLOURS.darkPurple;
+    } else if (props.section === APP_SECTIONS.lyric) {
+      return APP_COLOURS.grey;
+    } else if (props.section === APP_SECTIONS.lyric) {
+      return APP_COLOURS.olive;
+    }
+  }};
+  padding: 20px;
+`;
 
 function Header(props) {
   return (
-    <header>
-      <h1 className="header__title">{props.title}</h1>
-    </header>
+    <HeaderContainer section={props.section}>{props.children}</HeaderContainer>
   );
 }
 

@@ -1,13 +1,23 @@
 import React from "react";
 import { Link } from "@reach/router";
 import logo from "../../images/logo.svg";
-import "./HeaderLogo.css";
+import styled from "styled-components";
+
+const Logo = styled(Link)`
+  display: inline-block;
+  margin-bottom: 20px;
+`;
+
+const Image = styled.img`
+  width: 25px;
+  cursor: pointer;
+`;
 
 function HeaderLogo() {
   return (
-    <Link to="/" className="top-header__logo-link">
-      <img src={logo} alt="ace logo" className="top-header__logo" />
-    </Link>
+    <Logo to="/">
+      <Image src={logo} alt="bejebeje logo" />
+    </Logo>
   );
 }
 
