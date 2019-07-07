@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
+import { APP_COLOURS } from "../../helpers/appColours";
 
 const createMarkup = lyric => {
   return { __html: lyric.body };
@@ -21,9 +22,17 @@ const LyricBody = styled.main`
   }
 `;
 
+const TempHeading = styled.h1`
+  background-color: ${APP_COLOURS.olive};
+  font-size: 2rem;
+  display: block;
+  padding: 20px;
+`;
+
 function Lyric(props) {
-  const [lyric, setLyric] = useState({});
-  const [artist, setArtist] = useState({});
+  const [lyric, setLyric] = useState(null);
+  const [artist, setArtist] = useState(null);
+  const [author, setAuthor] = useState(null);
 
   useEffect(() => {
     const artistSlug = props.artistSlug;
@@ -38,14 +47,30 @@ function Lyric(props) {
         axios.spread((artistResponse, lyricResponse) => {
           setArtist(artistResponse.data);
           setLyric(lyricResponse.data);
+          // fetchAuthorDetails(lyricResponse.data.authorSlug);
         })
       );
   }, []);
 
+  const fetchAuthorDetails = authorSlug => {
+    axios.get(API_CONSTANTS.authorDetails(authorSlug)).then(result => {
+      setAuthor(result.data);
+    });
+  };
+
+  const Header = () => {
+    if (artist & lyric) {
+      return <h1>We have both</h1>;
+    } else {
+      return <h1>We have neither.</h1>;
+    }
+  };
+
   return (
     <>
-      <LyricHeader artist={artist} title={lyric.title} />
-      <LyricBody dangerouslySetInnerHTML={createMarkup(lyric)} />
+      <Header />
+      {/* {artist & lyric && <LyricHeader artist={artist} title={lyric.title} />} */}
+      {lyric && <LyricBody dangerouslySetInnerHTML={createMarkup(lyric)} />}
     </>
   );
 }
