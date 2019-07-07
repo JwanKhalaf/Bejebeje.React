@@ -47,7 +47,7 @@ function Lyric(props) {
         axios.spread((artistResponse, lyricResponse) => {
           setArtist(artistResponse.data);
           setLyric(lyricResponse.data);
-          // fetchAuthorDetails(lyricResponse.data.authorSlug);
+          fetchAuthorDetails(lyricResponse.data.authorSlug);
         })
       );
   }, []);
@@ -59,17 +59,15 @@ function Lyric(props) {
   };
 
   const Header = () => {
-    if (artist & lyric) {
-      return <h1>We have both</h1>;
-    } else {
-      return <h1>We have neither.</h1>;
+    if (artist && lyric) {
+      return <LyricHeader artist={artist} title={lyric.title} />;
     }
+    return "";
   };
 
   return (
     <>
       <Header />
-      {/* {artist & lyric && <LyricHeader artist={artist} title={lyric.title} />} */}
       {lyric && <LyricBody dangerouslySetInnerHTML={createMarkup(lyric)} />}
     </>
   );
