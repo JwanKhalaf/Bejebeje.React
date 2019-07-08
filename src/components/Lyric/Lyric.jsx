@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
 import { APP_COLOURS } from "../../helpers/appColours";
+import AuthorLink from "../AuthorLink/AuthorLink";
 
 const createMarkup = lyric => {
   return { __html: lyric.body };
@@ -20,13 +21,6 @@ const LyricBody = styled.main`
     color: #212121;
     margin-bottom: 20px;
   }
-`;
-
-const TempHeading = styled.h1`
-  background-color: ${APP_COLOURS.olive};
-  font-size: 2rem;
-  display: block;
-  padding: 20px;
 `;
 
 function Lyric(props) {
@@ -47,7 +41,12 @@ function Lyric(props) {
         axios.spread((artistResponse, lyricResponse) => {
           setArtist(artistResponse.data);
           setLyric(lyricResponse.data);
-          fetchAuthorDetails(lyricResponse.data.authorSlug);
+
+          const authorSlug = lyricResponse.data.authorSlug;
+
+          if (authorSlug) {
+            fetchAuthorDetails(lyricResponse.data.authorSlug);
+          }
         })
       );
   }, []);
@@ -56,6 +55,13 @@ function Lyric(props) {
     axios.get(API_CONSTANTS.authorDetails(authorSlug)).then(result => {
       setAuthor(result.data);
     });
+  };
+
+  const AuthorPane = () => {
+    if (author) {
+      return <AuthorLink author={author} />;
+    }
+    return "";
   };
 
   const Header = () => {
@@ -68,6 +74,7 @@ function Lyric(props) {
   return (
     <>
       <Header />
+      <AuthorPane />
       {lyric && <LyricBody dangerouslySetInnerHTML={createMarkup(lyric)} />}
     </>
   );
