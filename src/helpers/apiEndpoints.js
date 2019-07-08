@@ -13,5 +13,6 @@ export const API_CONSTANTS = {
   artistLyrics: slug => `${API_ROOT_URI}/artists/${slug}/lyrics`,
   singleLyric: (artistSlug, lyricSlug) =>
     `${API_ROOT_URI}/artists/${artistSlug}/lyrics/${lyricSlug}`,
-  image: slug => `${API_ROOT_URI}/artists/${slug}/image`
+  image: slug => `${API_ROOT_URI}/artists/${slug}/image`,
+  authorDetails: authorSlug => `${API_ROOT_URI}/author/${authorSlug}`
 };
