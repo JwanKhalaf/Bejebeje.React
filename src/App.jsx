@@ -10,6 +10,7 @@ import Lyric from "./components/Lyric/Lyric";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
 import { APP_COLOURS } from "./helpers/appColours";
 import Search from "./components/Search/Search";
+import Author from "./components/Author/Author";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
@@ -20,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     outline: none;
     font-size: 16px;
+    box-sizing: border-box;
   }
 
   body {
@@ -66,6 +68,7 @@ function App() {
         />
         <ArtistLyrics path="artists/:artistSlug/lyrics" />
         <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
+        <Author path="author/:authorSlug" />
         <Authorisation path="/callback" />
       </Router>
       <Search />

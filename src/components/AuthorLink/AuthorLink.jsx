@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "@reach/router";
 
 import { APP_COLOURS } from "../../helpers/appColours";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import { Link } from "@reach/router";
 
 const AuthorAnchorLink = styled(Link)`
   display: flex;
@@ -36,8 +36,10 @@ const AuthorImage = styled.img`
 `;
 
 function AuthorLink(props) {
+  const authorDetailsNavigationLink = `/author/${props.author.slug}`;
+
   return (
-    <AuthorAnchorLink to="/">
+    <AuthorAnchorLink to={authorDetailsNavigationLink}>
       <AuthorImage
         src={API_CONSTANTS.image(props.author.slug)}
         alt={props.author.slug}

@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { API_CONSTANTS } from "../../helpers/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
-import { APP_COLOURS } from "../../helpers/appColours";
 import AuthorLink from "../AuthorLink/AuthorLink";
 
 const createMarkup = lyric => {
