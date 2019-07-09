@@ -58,7 +58,13 @@ function Lyric(props) {
 
   const AuthorPane = () => {
     if (author) {
-      return <AuthorLink author={author} />;
+      return (
+        <AuthorLink
+          author={author}
+          artistSlug={props.artistSlug}
+          lyricSlug={props.lyricSlug}
+        />
+      );
     }
     return "";
   };

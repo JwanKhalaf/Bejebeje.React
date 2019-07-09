@@ -23,9 +23,11 @@ const AuthorImage = styled.img`
 `;
 
 function AuthorHeader(props) {
+  const navigationLink = `/artists/${props.artistSlug}/lyrics/${props.lyricSlug}`;
+
   return (
     <Header section={APP_SECTIONS.author}>
-      <NavigateBack to="/" />
+      <NavigateBack to={navigationLink} />
       <AuthorName>
         {props.author.firstName}
         <br />

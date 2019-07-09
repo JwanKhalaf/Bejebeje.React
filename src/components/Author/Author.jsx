@@ -31,8 +31,19 @@ function Author(props) {
   };
 
   const Header = () => {
+    const artistSlug = props.location.state.artistSlug;
+    const lyricSlug = props.location.state.lyricSlug;
+
     if (author) {
-      return <AuthorHeader author={author} />;
+      return (
+        <>
+          <AuthorHeader
+            author={author}
+            artistSlug={artistSlug}
+            lyricSlug={lyricSlug}
+          />
+        </>
+      );
     }
     return "";
   };
