@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { APP_SECTIONS } from "../../helpers/appSections";
 import { APP_COLOURS } from "../../helpers/appColours";
-import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 const HeaderContainer = styled.header`
   background-color: ${props => {
@@ -12,7 +11,7 @@ const HeaderContainer = styled.header`
       return APP_COLOURS.darkPurple;
     } else if (props.section === APP_SECTIONS.lyric) {
       return APP_COLOURS.grey;
-    } else if (props.section === APP_SECTIONS.lyric) {
+    } else if (props.section === APP_SECTIONS.author) {
       return APP_COLOURS.olive;
     }
   }};
