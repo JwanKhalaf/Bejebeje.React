@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
+import NavigateBack from "../NavigateBack/NavigateBack";
+import SidebarToggle from "../SidebarToggle/SidebarToggle";
 import { APP_SECTIONS } from "../../helpers/appSections";
 import { APP_COLOURS } from "../../helpers/appColours";
 
@@ -18,9 +21,31 @@ const HeaderContainer = styled.header`
   padding: 20px;
 `;
 
+const TopHeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
 function Header(props) {
+  let leftElement;
+
+  if (props.navigateBack) {
+    leftElement = <NavigateBack to={props.navigateBack} />;
+  } else {
+    leftElement = <HeaderLogo />;
+  }
+
   return (
-    <HeaderContainer section={props.section}>{props.children}</HeaderContainer>
+    <HeaderContainer section={props.section}>
+      <TopHeaderContainer>
+        {leftElement}
+        <SidebarToggle />
+      </TopHeaderContainer>
+
+      {props.children}
+    </HeaderContainer>
   );
 }
 

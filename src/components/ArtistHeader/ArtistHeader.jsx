@@ -43,8 +43,7 @@ const LyricCount = styled.h4`
 
 function ArtistHeader(props) {
   return (
-    <Header section={APP_SECTIONS.artist}>
-      <NavigateBack to="/" />
+    <Header section={APP_SECTIONS.artist} navigateBack="/">
       <ArtistName>
         {props.artist.firstName}
         <br />

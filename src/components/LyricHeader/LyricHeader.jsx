@@ -41,11 +41,10 @@ const LyricTitle = styled.h1`
 `;
 
 function LyricHeader(props) {
-  const backNavigationUrl = `/artists/${props.artist.slug}/lyrics`;
+  const navigationLink = `/artists/${props.artist.slug}/lyrics`;
 
   return (
-    <Header section={APP_SECTIONS.lyric}>
-      <NavigateBack to={backNavigationUrl} />
+    <Header section={APP_SECTIONS.lyric} navigateBack={navigationLink}>
       <ArtistInformation>
         <ArtistImage
           src={API_CONSTANTS.image(props.artist.slug)}

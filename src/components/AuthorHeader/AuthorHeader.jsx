@@ -26,8 +26,7 @@ function AuthorHeader(props) {
   const navigationLink = `/artists/${props.artistSlug}/lyrics/${props.lyricSlug}`;
 
   return (
-    <Header section={APP_SECTIONS.author}>
-      <NavigateBack to={navigationLink} />
+    <Header section={APP_SECTIONS.author} navigateBack={navigationLink}>
       <AuthorName>
         {props.author.firstName}
         <br />
