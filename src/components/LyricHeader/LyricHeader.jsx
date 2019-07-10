@@ -44,7 +44,11 @@ function LyricHeader(props) {
   const navigationLink = `/artists/${props.artist.slug}/lyrics`;
 
   return (
-    <Header section={APP_SECTIONS.lyric} navigateBack={navigationLink}>
+    <Header
+      section={APP_SECTIONS.lyric}
+      navigateBack={navigationLink}
+      sidebarToggle={props.sidebarToggle}
+    >
       <ArtistInformation>
         <ArtistImage
           src={API_CONSTANTS.image(props.artist.slug)}

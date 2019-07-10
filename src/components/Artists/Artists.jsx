@@ -62,7 +62,7 @@ function Artists(props) {
 
   return (
     <>
-      <Header section={APP_SECTIONS.home}>
+      <Header section={APP_SECTIONS.home} sidebarToggle={props.sidebarToggle}>
         <Title text="Browse" />
       </Header>
       <ArtistsContainer>

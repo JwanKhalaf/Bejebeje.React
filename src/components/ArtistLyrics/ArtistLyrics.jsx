@@ -44,7 +44,11 @@ function ArtistLyrics(props) {
 
   return (
     <>
-      <ArtistHeader artist={artist} artistLyricCount={lyrics.length} />
+      <ArtistHeader
+        artist={artist}
+        artistLyricCount={lyrics.length}
+        sidebarToggle={props.sidebarToggle}
+      />
       <LyricsContainer className="lyrics">
         {lyrics.map(lyric => (
           <LyricCard key={lyric.slug} lyric={lyric} />

@@ -8,11 +8,16 @@ const Aside = styled.aside`
   width: 70%;
   max-width: 400px;
   padding: 20px;
-  background-color: wheat;
+  background-color: #5b5847;
   height: 100vh;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   z-index: 3;
-  transform: translateX(100%);
+  transform: ${props => (props.show ? "translateX(0)" : "translateX(102%)")};
+  transition: transform 0.2s ease-out;
+
+  h1 {
+    color: #ffffff;
+  }
 `;
 
 function Sidebar(props) {

@@ -41,7 +41,7 @@ function Header(props) {
     <HeaderContainer section={props.section}>
       <TopHeaderContainer>
         {leftElement}
-        <SidebarToggle />
+        <SidebarToggle sidebarToggle={props.sidebarToggle} />
       </TopHeaderContainer>
 
       {props.children}

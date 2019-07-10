@@ -11,8 +11,8 @@ const DarkDiv = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
-function Backdrop(prps) {
-  return <DarkDiv />;
+function Backdrop(props) {
+  return <DarkDiv onClick={props.click} />;
 }
 
 export default Backdrop;

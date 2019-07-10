@@ -46,6 +46,14 @@ function App() {
     }
   };
 
+  const sidebarToggleButtonClickHandler = () => {
+    setSidebarToggle(!sidebarToggle);
+  };
+
+  const backdropClickHandler = () => {
+    setSidebarToggle(false);
+  };
+
   const fetchArtists = (offset, limit) => {
     axios.get(API_CONSTANTS.artists(offset.current, limit)).then(result => {
       const artistsArray = result.data.artists;
@@ -62,7 +70,7 @@ function App() {
   let backdrop;
 
   if (sidebarToggle) {
-    backdrop = <Backdrop />;
+    backdrop = <Backdrop click={backdropClickHandler} />;
   }
 
   return (
@@ -74,10 +82,20 @@ function App() {
           artists={artists}
           intersectionCallback={callback}
           totalArtists={totalNumberOfArtists.current}
+          sidebarToggle={sidebarToggleButtonClickHandler}
         />
-        <ArtistLyrics path="artists/:artistSlug/lyrics" />
-        <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
-        <Author path="author/:authorSlug" />
+        <ArtistLyrics
+          path="artists/:artistSlug/lyrics"
+          sidebarToggle={sidebarToggleButtonClickHandler}
+        />
+        <Lyric
+          path="artists/:artistSlug/lyrics/:lyricSlug"
+          sidebarToggle={sidebarToggleButtonClickHandler}
+        />
+        <Author
+          path="author/:authorSlug"
+          sidebarToggle={sidebarToggleButtonClickHandler}
+        />
         <Authorisation path="/callback" />
       </Router>
       <Search />
