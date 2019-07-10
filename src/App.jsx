@@ -7,10 +7,11 @@ import Authorisation from "./components/Authorisation/Authorisation";
 import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
-import { API_CONSTANTS } from "./helpers/apiEndpoints";
-import { APP_COLOURS } from "./helpers/appColours";
 import Search from "./components/Search/Search";
 import Author from "./components/Author/Author";
+import Sidebar from "./components/Sidebar/Sidebar";
+import { API_CONSTANTS } from "./helpers/apiEndpoints";
+import { APP_COLOURS } from "./helpers/appColours";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
@@ -72,6 +73,7 @@ function App() {
         <Authorisation path="/callback" />
       </Router>
       <Search />
+      <Sidebar />
     </div>
   );
 }
