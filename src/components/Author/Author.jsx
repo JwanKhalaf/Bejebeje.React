@@ -41,6 +41,7 @@ function Author(props) {
             author={author}
             artistSlug={artistSlug}
             lyricSlug={lyricSlug}
+            sidebarToggle={props.sidebarToggle}
           />
         </>
       );

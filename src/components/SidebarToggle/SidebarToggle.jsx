@@ -10,6 +10,13 @@ const SidebarToggleButton = styled.button`
   border: none;
   outline: none;
   background: transparent;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
 `;
 
 const ButtonBarLong = styled.div`
@@ -29,7 +36,7 @@ const ButtonBarShort = styled.div`
 
 function SidebarToggle(props) {
   return (
-    <SidebarToggleButton>
+    <SidebarToggleButton onClick={props.sidebarToggle}>
       <ButtonBarLong />
       <ButtonBarShort />
     </SidebarToggleButton>

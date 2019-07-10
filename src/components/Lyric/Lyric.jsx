@@ -71,7 +71,13 @@ function Lyric(props) {
 
   const Header = () => {
     if (artist && lyric) {
-      return <LyricHeader artist={artist} title={lyric.title} />;
+      return (
+        <LyricHeader
+          artist={artist}
+          title={lyric.title}
+          sidebarToggle={props.sidebarToggle}
+        />
+      );
     }
     return "";
   };

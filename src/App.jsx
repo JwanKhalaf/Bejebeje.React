@@ -7,10 +7,12 @@ import Authorisation from "./components/Authorisation/Authorisation";
 import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
-import { API_CONSTANTS } from "./helpers/apiEndpoints";
-import { APP_COLOURS } from "./helpers/appColours";
 import Search from "./components/Search/Search";
 import Author from "./components/Author/Author";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Backdrop from "./components/Backdrop/Backdrop";
+import { API_CONSTANTS } from "./helpers/apiEndpoints";
+import { APP_COLOURS } from "./helpers/appColours";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
@@ -31,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [artists, setArtists] = useState([]);
+  const [sidebarToggle, setSidebarToggle] = useState(false);
   const totalNumberOfArtists = useRef(0);
   const offset = useRef(0);
   const limit = 10;
@@ -41,6 +44,14 @@ function App() {
         fetchArtists(offset, limit);
       }
     }
+  };
+
+  const sidebarToggleButtonClickHandler = () => {
+    setSidebarToggle(!sidebarToggle);
+  };
+
+  const backdropClickHandler = () => {
+    setSidebarToggle(false);
   };
 
   const fetchArtists = (offset, limit) => {
@@ -56,6 +67,12 @@ function App() {
     fetchArtists(offset, limit);
   }, []);
 
+  let backdrop;
+
+  if (sidebarToggle) {
+    backdrop = <Backdrop click={backdropClickHandler} />;
+  }
+
   return (
     <div>
       <GlobalStyle />
@@ -65,13 +82,25 @@ function App() {
           artists={artists}
           intersectionCallback={callback}
           totalArtists={totalNumberOfArtists.current}
+          sidebarToggle={sidebarToggleButtonClickHandler}
         />
-        <ArtistLyrics path="artists/:artistSlug/lyrics" />
-        <Lyric path="artists/:artistSlug/lyrics/:lyricSlug" />
-        <Author path="author/:authorSlug" />
+        <ArtistLyrics
+          path="artists/:artistSlug/lyrics"
+          sidebarToggle={sidebarToggleButtonClickHandler}
+        />
+        <Lyric
+          path="artists/:artistSlug/lyrics/:lyricSlug"
+          sidebarToggle={sidebarToggleButtonClickHandler}
+        />
+        <Author
+          path="author/:authorSlug"
+          sidebarToggle={sidebarToggleButtonClickHandler}
+        />
         <Authorisation path="/callback" />
       </Router>
       <Search />
+      <Sidebar show={sidebarToggle} />
+      {backdrop}
     </div>
   );
 }
