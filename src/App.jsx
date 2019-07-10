@@ -10,6 +10,7 @@ import Lyric from "./components/Lyric/Lyric";
 import Search from "./components/Search/Search";
 import Author from "./components/Author/Author";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Backdrop from "./components/Backdrop/Backdrop";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
 import { APP_COLOURS } from "./helpers/appColours";
 
@@ -32,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [artists, setArtists] = useState([]);
+  const [sidebarToggle, setSidebarToggle] = useState(false);
   const totalNumberOfArtists = useRef(0);
   const offset = useRef(0);
   const limit = 10;
@@ -57,6 +59,12 @@ function App() {
     fetchArtists(offset, limit);
   }, []);
 
+  let backdrop;
+
+  if (sidebarToggle) {
+    backdrop = <Backdrop />;
+  }
+
   return (
     <div>
       <GlobalStyle />
@@ -73,7 +81,8 @@ function App() {
         <Authorisation path="/callback" />
       </Router>
       <Search />
-      <Sidebar />
+      <Sidebar show={sidebarToggle} />
+      {backdrop}
     </div>
   );
 }
