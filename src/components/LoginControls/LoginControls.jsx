@@ -1,29 +1,27 @@
-import React from 'react';
-import AuthService from '../authorisation/AuthService';
+import React from "react";
+import AuthService from "../Authorisation/AuthService";
 
 const authenticationService = new AuthService();
 
-class LoginControls extends React.Component {
-  handleLoginClick() {
+function LoginControls(props) {
+  const handleLoginClick = () => {
     authenticationService.login();
-  }
+  };
 
-  handleLogoutClick() {
+  const handleLogoutClick = () => {
     authenticationService.logout();
-  }
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <button id="login-button" onClick={this.handleLoginClick}>
-          Login
-        </button>
-        <button id="logout-button" onClick={this.handleLogoutClick}>
-          Logout
-        </button>
-      </React.Fragment>
-    );
-  }
+  return (
+    <>
+      <button id="login-button" onClick={handleLoginClick}>
+        Login
+      </button>
+      <button id="logout-button" onClick={handleLogoutClick}>
+        Logout
+      </button>
+    </>
+  );
 }
 
 export default LoginControls;

@@ -13,6 +13,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Backdrop from "./components/Backdrop/Backdrop";
 import { API_CONSTANTS } from "./helpers/apiEndpoints";
 import { APP_COLOURS } from "./helpers/appColours";
+import LoginControls from "./components/LoginControls/LoginControls";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
@@ -99,7 +100,9 @@ function App() {
         <Authorisation path="/callback" />
       </Router>
       <Search />
-      <Sidebar show={sidebarToggle} />
+      <Sidebar show={sidebarToggle}>
+        <LoginControls />
+      </Sidebar>
       {backdrop}
     </div>
   );
