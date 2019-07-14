@@ -3687,7 +3687,7 @@ object.values@^1.1.0:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-oidc-client@^1.7.0:
+oidc-client@^1.8.2:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/oidc-client/-/oidc-client-1.8.2.tgz#5a73c33858fe0e25489fdc6de31c8ce3075f6e0b"
   integrity sha512-WwoSY8S6QyNN3qpne88YurjNqjTf6z1Xr0y+OrFVvdnVPYcefkTtXlZ5iOwR2JrmP4vBuq2j8eTjUJyDZFrFNQ==
