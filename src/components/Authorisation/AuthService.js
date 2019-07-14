@@ -1,4 +1,4 @@
-import { UserManager } from 'oidc-client';
+import { UserManager } from "oidc-client";
 
 const defaultConfig = {
   authority: process.env.IDENTITY_AUTHORITY,

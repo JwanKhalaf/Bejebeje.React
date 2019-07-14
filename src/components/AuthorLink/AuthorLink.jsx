@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link, navigate } from "@reach/router";
 
-import { APP_COLOURS } from "../../helpers/appColours";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
+import { APP_COLOURS } from "../../utils/appColours";
+import { API_CONSTANTS } from "../../utils/apiEndpoints";
 
 const AuthorAnchorLink = styled.a`
   display: flex;

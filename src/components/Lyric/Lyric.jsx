@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
+import { API_CONSTANTS } from "../../utils/apiEndpoints";
 import LyricHeader from "../LyricHeader/LyricHeader";
 import AuthorLink from "../AuthorLink/AuthorLink";
 
