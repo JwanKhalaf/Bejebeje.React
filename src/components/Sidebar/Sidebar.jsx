@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import UserContext from "../../contexts/UserContext";
 
 const Aside = styled.aside`
   position: fixed;
@@ -22,16 +21,7 @@ const Aside = styled.aside`
 `;
 
 function Sidebar(props) {
-  return (
-    <UserContext.Consumer>
-      {user => {
-        <Aside show={props.show}>
-          {user && <h2>Hello {user}</h2>}
-          {props.children}
-        </Aside>;
-      }}
-    </UserContext.Consumer>
-  );
+  return <Aside show={props.show}>{props.children}</Aside>;
 }
 
 export default Sidebar;
