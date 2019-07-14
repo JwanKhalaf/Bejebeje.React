@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 import { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import Authorisation from "./components/Authorisation/Authorisation";
+import AuthHandshake from "./components/AuthHandshake/AuthHandshake";
 import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
@@ -11,8 +11,8 @@ import Search from "./components/Search/Search";
 import Author from "./components/Author/Author";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Backdrop from "./components/Backdrop/Backdrop";
-import UserContext from "./contexts/UserContext";
 import LoginControls from "./components/LoginControls/LoginControls";
+import { AuthProvider } from "./components/AuthProvider/AuthProvider";
 import { API_CONSTANTS } from "./utils/apiEndpoints";
 import { APP_COLOURS } from "./utils/appColours";
 
@@ -34,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [user, setUser] = useState(null);
   const [artists, setArtists] = useState([]);
   const [sidebarToggle, setSidebarToggle] = useState(false);
   const totalNumberOfArtists = useRef(0);
@@ -77,7 +76,7 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={user}>
+    <AuthProvider>
       <GlobalStyle />
       <Router>
         <Artists
@@ -99,14 +98,14 @@ function App() {
           path="author/:authorSlug"
           sidebarToggle={sidebarToggleButtonClickHandler}
         />
-        <Authorisation path="/callback" />
+        <AuthHandshake path="/login-callback" />
       </Router>
       <Search />
       <Sidebar show={sidebarToggle}>
         <LoginControls />
       </Sidebar>
       {backdrop}
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 
