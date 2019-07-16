@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../Header/Header";
 import ArtistCard from "../ArtistCard/ArtistCard";
 import Title from "../Title/Title";
-import { APP_SECTIONS } from "../../helpers/appSections";
+import { APP_SECTIONS } from "../../utils/appSections";
 
 const ArtistsContainer = styled.main`
   padding: 25px 0 0 20px;

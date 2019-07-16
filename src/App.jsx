@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 import { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import Authorisation from "./components/Authorisation/Authorisation";
+import AuthHandshake from "./components/AuthHandshake/AuthHandshake";
 import Artists from "./components/Artists/Artists";
 import ArtistLyrics from "./components/ArtistLyrics/ArtistLyrics";
 import Lyric from "./components/Lyric/Lyric";
@@ -11,8 +11,10 @@ import Search from "./components/Search/Search";
 import Author from "./components/Author/Author";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Backdrop from "./components/Backdrop/Backdrop";
-import { API_CONSTANTS } from "./helpers/apiEndpoints";
-import { APP_COLOURS } from "./helpers/appColours";
+import LoginControls from "./components/LoginControls/LoginControls";
+import { AuthProvider } from "./components/AuthProvider/AuthProvider";
+import { API_CONSTANTS } from "./utils/apiEndpoints";
+import { APP_COLOURS } from "./utils/appColours";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
@@ -74,7 +76,7 @@ function App() {
   }
 
   return (
-    <div>
+    <AuthProvider>
       <GlobalStyle />
       <Router>
         <Artists
@@ -96,12 +98,14 @@ function App() {
           path="author/:authorSlug"
           sidebarToggle={sidebarToggleButtonClickHandler}
         />
-        <Authorisation path="/callback" />
+        <AuthHandshake path="/login-callback" />
       </Router>
       <Search />
-      <Sidebar show={sidebarToggle} />
+      <Sidebar show={sidebarToggle}>
+        <LoginControls />
+      </Sidebar>
       {backdrop}
-    </div>
+    </AuthProvider>
   );
 }
 

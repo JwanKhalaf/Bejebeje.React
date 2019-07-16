@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
+import { API_CONSTANTS } from "../../utils/apiEndpoints";
 import Header from "../Header/Header";
-import { APP_SECTIONS } from "../../helpers/appSections";
+import { APP_SECTIONS } from "../../utils/appSections";
 import NavigateBack from "../NavigateBack/NavigateBack";
 
 const ArtistInformation = styled.div`

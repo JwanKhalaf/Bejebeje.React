@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import Header from "../Header/Header";
 import NavigateBack from "../NavigateBack/NavigateBack";
-import { APP_SECTIONS } from "../../helpers/appSections";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
+import { APP_SECTIONS } from "../../utils/appSections";
+import { API_CONSTANTS } from "../../utils/apiEndpoints";
 
 const AuthorName = styled.h2`
   font-family: "Roboto", sans-serif;

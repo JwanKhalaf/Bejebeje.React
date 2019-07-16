@@ -3,8 +3,8 @@ import styled from "styled-components";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import NavigateBack from "../NavigateBack/NavigateBack";
 import SidebarToggle from "../SidebarToggle/SidebarToggle";
-import { APP_SECTIONS } from "../../helpers/appSections";
-import { APP_COLOURS } from "../../helpers/appColours";
+import { APP_SECTIONS } from "../../utils/appSections";
+import { APP_COLOURS } from "../../utils/appColours";
 
 const HeaderContainer = styled.header`
   background-color: ${props => {

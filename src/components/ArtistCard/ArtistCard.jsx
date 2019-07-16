@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
-import { APP_COLOURS } from "../../helpers/appColours";
+import { API_CONSTANTS } from "../../utils/apiEndpoints";
+import { APP_COLOURS } from "../../utils/appColours";
 
 const Card = styled.div`
   background-color: ${APP_COLOURS.darkPurple};

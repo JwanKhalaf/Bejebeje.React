@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import styled from "styled-components";
-import { APP_COLOURS } from "../../helpers/appColours";
+import { APP_COLOURS } from "../../utils/appColours";
 
 const Card = styled.div`
   background-color: ${APP_COLOURS.grey};

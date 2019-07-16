@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
-import { APP_COLOURS } from "../../helpers/appColours";
+import { APP_COLOURS } from "../../utils/appColours";
 
 const SearchButton = styled.div`
   position: fixed;

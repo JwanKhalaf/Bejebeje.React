@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import styled from "styled-components";
 import axios from "axios";
-import { API_CONSTANTS } from "../../helpers/apiEndpoints";
+import { API_CONSTANTS } from "../../utils/apiEndpoints";
 import ArtistHeader from "../ArtistHeader/ArtistHeader";
 import LyricCard from "../LyricCard/LyricCard";
 

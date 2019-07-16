@@ -21,11 +21,7 @@ const Aside = styled.aside`
 `;
 
 function Sidebar(props) {
-  return (
-    <Aside show={props.show}>
-      <h1>Hello from Sidebar!</h1>
-    </Aside>
-  );
+  return <Aside show={props.show}>{props.children}</Aside>;
 }
 
 export default Sidebar;
