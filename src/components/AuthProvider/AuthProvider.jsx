@@ -19,7 +19,6 @@ const logout = () => {
 };
 
 const loginCallback = () => {
-  console.log("login call back fired");
   const queryResponseTypeUserManager = new UserManager({
     response_mode: "query"
   })
