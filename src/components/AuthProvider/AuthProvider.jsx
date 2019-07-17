@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { navigate } from "@reach/router";
 import { UserManager, WebStorageStateStore } from "oidc-client";
 import AuthContext from "../../contexts/AuthContext";
 import { IDENTITY_CONFIG } from "../../utils/authConfig";
@@ -18,31 +19,30 @@ const logout = () => {
   userManager.signoutRedirect();
 };
 
-const loginCallback = () => {
-  const queryResponseTypeUserManager = new UserManager({
-    response_mode: "query"
-  })
-    .signinRedirectCallback()
-    .then(
-      user => {
-        console.log("login callback was called.");
-        console.log(user);
-        window.location.href = "http://localhost:1234";
-      },
-      error => {
-        console.error(error);
-      }
-    );
-};
-
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
+
+  const loginCallback = () => {
+    const queryResponseTypeUserManager = new UserManager({
+      response_mode: "query"
+    })
+      .signinRedirectCallback()
+      .then(
+        user => {
+          setUser(user);
+          navigate("/");
+        },
+        error => {
+          console.error(error);
+        }
+      );
+  };
 
   const providerValue = {
     login: login,
     logout: logout,
     loginCallback: loginCallback,
-    isAuthenticated: () => ({})
+    isAuthenticated: user
   };
 
   const Provider = () => {
