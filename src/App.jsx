@@ -12,7 +12,10 @@ import Author from "./components/Author/Author";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Backdrop from "./components/Backdrop/Backdrop";
 import LoginControls from "./components/LoginControls/LoginControls";
-import { AuthProvider } from "./components/AuthProvider/AuthProvider";
+import {
+  AuthProvider,
+  AuthConsumer
+} from "./components/AuthProvider/AuthProvider";
 import { API_CONSTANTS } from "./utils/apiEndpoints";
 import { APP_COLOURS } from "./utils/appColours";
 
@@ -102,7 +105,15 @@ function App() {
       </Router>
       <Search />
       <Sidebar show={sidebarToggle}>
-        <LoginControls />
+        <AuthConsumer>
+          {value => {
+            if (value.isAuthenticated) {
+              return <h1>You're authenticated!</h1>;
+            } else {
+              return <LoginControls />;
+            }
+          }}
+        </AuthConsumer>
       </Sidebar>
       {backdrop}
     </AuthProvider>
