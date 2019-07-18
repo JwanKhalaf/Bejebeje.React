@@ -7,7 +7,6 @@ branches:
   only:
     - master
     - develop
-    - bug/buttons-not-working-on-iphone
 before_script:
   - chmod -R a+x scripts
 script:

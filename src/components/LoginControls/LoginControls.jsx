@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { AuthConsumer } from "../AuthProvider/AuthProvider";
 
-const LoginButton = styled.button`
+const LoginButton = styled.a`
   background-color: green;
   cursor: pointer;
   padding: 5px 10px;
@@ -12,7 +12,7 @@ const LoginButton = styled.button`
   font-weight: bold;
 `;
 
-const LogoutButton = styled.button`
+const LogoutButton = styled.a`
   background-color: red;
   cursor: pointer;
   padding: 5px 10px;
@@ -25,16 +25,21 @@ const LogoutButton = styled.button`
 function LoginControls(props) {
   return (
     <AuthConsumer>
-      {value => (
-        <>
-          <LoginButton id="login-button" onClick={value.login}>
-            Login
-          </LoginButton>
-          <LogoutButton id="logout-button" onClick={value.logout}>
-            Logout
-          </LogoutButton>
-        </>
-      )}
+      {value => {
+        if (value.isAuthenticated) {
+          return (
+            <LogoutButton id="logout-button" onClick={value.logout}>
+              Logout
+            </LogoutButton>
+          );
+        } else {
+          return (
+            <LoginButton id="login-button" onClick={value.login}>
+              Login
+            </LoginButton>
+          );
+        }
+      }}
     </AuthConsumer>
   );
 }
