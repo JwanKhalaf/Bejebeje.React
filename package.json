@@ -7,6 +7,9 @@
   "author": "J Khalaf <jwan.khalaf@outlook.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@reach/router": "^1.2.1",
     "oidc-client": "^1.8.2",
     "react": ">=16",
