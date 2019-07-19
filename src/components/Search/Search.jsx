@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { FaSearch } from "react-icons/fa";
 import { APP_COLOURS } from "../../utils/appColours";
 
 const SearchButton = styled.div`
@@ -16,17 +15,8 @@ const SearchButton = styled.div`
   cursor: pointer;
 `;
 
-const Icon = styled(FaSearch)`
-  font-size: 1.5rem;
-  color: #ffffff;
-`;
-
 function Search(props) {
-  return (
-    <SearchButton>
-      <Icon />
-    </SearchButton>
-  );
+  return <SearchButton></SearchButton>;
 }
 
 export default Search;
