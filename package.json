@@ -11,7 +11,6 @@
     "oidc-client": "^1.8.2",
     "react": ">=16",
     "react-dom": "^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0",
-    "react-icons": "^3.7.0",
     "styled-components": "^4.3.2"
   },
   "scripts": {
@@ -19,6 +18,7 @@
     "build": "parcel build src/index.html"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.9.0",
     "axios": "^0.19.0",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4",
