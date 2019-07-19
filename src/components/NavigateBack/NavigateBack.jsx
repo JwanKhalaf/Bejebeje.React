@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { FaArrowLeft } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 const BackArrow = styled(Link)`
@@ -9,14 +9,14 @@ const BackArrow = styled(Link)`
   margin-bottom: 30px;
 `;
 
-const Icon = styled(FaArrowLeft)`
+const Icon = styled(FontAwesomeIcon)`
   font-size: 2rem;
 `;
 
 function NavigateBack(props) {
   return (
     <BackArrow to={props.to}>
-      <Icon />
+      <Icon icon="arrow-left" />
     </BackArrow>
   );
 }

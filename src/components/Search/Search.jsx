@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { APP_COLOURS } from "../../utils/appColours";
 
 const SearchButton = styled.div`
@@ -15,8 +16,16 @@ const SearchButton = styled.div`
   cursor: pointer;
 `;
 
+const Icon = styled(FontAwesomeIcon)`
+  font-size: 0.8rem;
+`;
+
 function Search(props) {
-  return <SearchButton></SearchButton>;
+  return (
+    <SearchButton>
+      <Icon icon="coffee" />
+    </SearchButton>
+  );
 }
 
 export default Search;

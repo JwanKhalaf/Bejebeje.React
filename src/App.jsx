@@ -16,8 +16,12 @@ import {
   AuthProvider,
   AuthConsumer
 } from "./components/AuthProvider/AuthProvider";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowLeft, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { API_CONSTANTS } from "./utils/apiEndpoints";
 import { APP_COLOURS } from "./utils/appColours";
+
+library.add(faArrowLeft, faCoffee);
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,700&display=swap');
