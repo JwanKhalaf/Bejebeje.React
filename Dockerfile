@@ -13,6 +13,10 @@ COPY . .
 # export the fontawesome secret key
 RUN export FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN
 
+RUN echo "Fontawesome is"
+
+RUN echo $FONTAWESOME_NPM_AUTH_TOKEN
+
 # install dependencies as normal.
 RUN yarn install
 
