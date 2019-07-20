@@ -10,6 +10,9 @@ WORKDIR /app
 # from local machine to /app (in the container).
 COPY . .
 
+# export the fontawesome secret key
+RUN export FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN
+
 # install dependencies as normal.
 RUN yarn install
 
