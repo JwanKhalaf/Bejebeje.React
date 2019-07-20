@@ -1,5 +1,8 @@
 DOCKER_TAG='latest'
 
+# export the fontawesome secret key
+export FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN
+
 # log into docker hub.
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
