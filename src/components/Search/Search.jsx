@@ -17,13 +17,13 @@ const SearchButton = styled.div`
 `;
 
 const Icon = styled(FontAwesomeIcon)`
-  font-size: 0.8rem;
+  font-size: 1rem;
 `;
 
 function Search(props) {
   return (
     <SearchButton>
-      <Icon icon="coffee" />
+      <Icon icon={["fas", "search"]} />
     </SearchButton>
   );
 }

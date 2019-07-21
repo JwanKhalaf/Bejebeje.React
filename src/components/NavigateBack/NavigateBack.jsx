@@ -16,7 +16,7 @@ const Icon = styled(FontAwesomeIcon)`
 function NavigateBack(props) {
   return (
     <BackArrow to={props.to}>
-      <Icon icon="arrow-left" />
+      <Icon icon={["fas", "long-arrow-left"]} />
     </BackArrow>
   );
 }
