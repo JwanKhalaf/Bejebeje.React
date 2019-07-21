@@ -7,6 +7,13 @@
   "author": "J Khalaf <jwan.khalaf@outlook.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/pro-light-svg-icons": "^5.9.0",
+    "@fortawesome/pro-regular-svg-icons": "^5.9.0",
+    "@fortawesome/pro-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@reach/router": "^1.2.1",
     "oidc-client": "^1.8.2",
     "react": ">=16",
@@ -19,6 +26,7 @@
     "build": "parcel build src/index.html"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.9.0",
     "axios": "^0.19.0",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4",

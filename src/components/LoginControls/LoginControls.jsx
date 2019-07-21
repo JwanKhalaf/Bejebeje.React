@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AuthConsumer } from "../AuthProvider/AuthProvider";
 
-const LoginButton = styled.a`
-  background-color: green;
+const LoginLink = styled.a`
   cursor: pointer;
   padding: 5px 10px;
   border: none;
@@ -12,14 +12,18 @@ const LoginButton = styled.a`
   font-weight: bold;
 `;
 
-const LogoutButton = styled.a`
-  background-color: red;
+const LogoutLink = styled.a`
   cursor: pointer;
   padding: 5px 10px;
   border: none;
   color: #ffffff;
   margin-right: 15px;
   font-weight: bold;
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  font-size: 1rem;
+  margin-right: 10px;
 `;
 
 function LoginControls(props) {
@@ -28,15 +32,17 @@ function LoginControls(props) {
       {value => {
         if (value.isAuthenticated) {
           return (
-            <LogoutButton id="logout-button" onClick={value.logout}>
+            <LogoutLink id="logout-button" onClick={value.logout}>
+              <Icon icon={["fas", "power-off"]} />
               Logout
-            </LogoutButton>
+            </LogoutLink>
           );
         } else {
           return (
-            <LoginButton id="login-button" onClick={value.login}>
+            <LoginLink id="login-button" onClick={value.login}>
+              <Icon icon={["fas", "power-off"]} />
               Login
-            </LoginButton>
+            </LoginLink>
           );
         }
       }}

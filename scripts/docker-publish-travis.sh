@@ -4,7 +4,7 @@ DOCKER_TAG='latest'
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 # build the docker image.
-docker build -f ./Dockerfile -t bejebeje/react:$DOCKER_TAG -t bejebeje/react:$TRAVIS_BUILD_NUMBER . --no-cache
+docker build -f ./Dockerfile -t bejebeje/react:$DOCKER_TAG -t bejebeje/react:$TRAVIS_BUILD_NUMBER --build-arg FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN . --no-cache
 
 # tag the docker image with latest.
 docker tag bejebeje/react:$DOCKER_TAG $DOCKER_USERNAME/bejebeje/react:$DOCKER_TAG

@@ -1,6 +1,9 @@
 # set base image as alpine-node version 11.
 FROM mhart/alpine-node:11 AS builder
 
+# fontawesome pro auth token
+ARG FONTAWESOME_NPM_AUTH_TOKEN
+
 # set the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD
 # instructions that follows the WORKDIR instruction.
 WORKDIR /app
@@ -9,6 +12,9 @@ WORKDIR /app
 # we now copy everything (except stuff listed in .dockerignore)
 # from local machine to /app (in the container).
 COPY . .
+
+# export the fontawesome secret key
+RUN export FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN
 
 # install dependencies as normal.
 RUN yarn install
