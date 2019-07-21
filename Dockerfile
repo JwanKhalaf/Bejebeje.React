@@ -1,6 +1,9 @@
 # set base image as alpine-node version 11.
 FROM mhart/alpine-node:11 AS builder
 
+# fontawesome pro auth token
+ARG FONTAWESOME_NPM_AUTH_TOKEN
+
 # set the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD
 # instructions that follows the WORKDIR instruction.
 WORKDIR /app
@@ -12,10 +15,6 @@ COPY . .
 
 # export the fontawesome secret key
 RUN export FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN
-
-RUN echo "Fontawesome is"
-
-RUN echo $FONTAWESOME_NPM_AUTH_TOKEN
 
 # install dependencies as normal.
 RUN yarn install
