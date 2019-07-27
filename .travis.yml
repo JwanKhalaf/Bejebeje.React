@@ -7,7 +7,6 @@ branches:
   only:
     - master
     - develop
-    - feature/passing-environment-variables-to-the-frontend
 before_script:
   - chmod -R a+x scripts
 script:
