@@ -4,6 +4,24 @@ FROM mhart/alpine-node:11 AS builder
 # fontawesome pro auth token
 ARG FONTAWESOME_NPM_AUTH_TOKEN
 
+# identity authority
+ARG IDENTITY_AUTHORITY
+
+# identity client id
+ARG IDENTITY_CLIENT_ID
+
+# identity redirect uri
+ARG IDENTITY_REDIRECT_URI
+
+# identity response type
+ARG IDENTITY_RESPONSE_TYPE
+
+# identity scope
+ARG IDENTITY_SCOPE
+
+# identity post logout redirect ui
+ARG IDENTITY_POST_LOGOUT_REDIRECT_URI
+
 # set the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD
 # instructions that follows the WORKDIR instruction.
 WORKDIR /app
@@ -12,9 +30,6 @@ WORKDIR /app
 # we now copy everything (except stuff listed in .dockerignore)
 # from local machine to /app (in the container).
 COPY . .
-
-# export the fontawesome secret key
-RUN export FONTAWESOME_NPM_AUTH_TOKEN=$FONTAWESOME_NPM_AUTH_TOKEN
 
 # install dependencies as normal.
 RUN yarn install
