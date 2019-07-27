@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "IDENTITY_AUTHORITY=${IDENTITY_AUTHORITY} parcel build src/index.html"
+    "build": "parcel build src/index.html"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-pro": "^5.9.0",
