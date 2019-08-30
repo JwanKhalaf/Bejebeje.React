@@ -23,19 +23,21 @@ export function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
   const loginCallback = () => {
-    const queryResponseTypeUserManager = new UserManager({
-      response_mode: "query"
-    })
-      .signinRedirectCallback()
-      .then(
-        user => {
-          setUser(user);
-          navigate("/");
-        },
-        error => {
-          console.error(error);
-        }
-      );
+    userManager.signinRedirectCallback().then(
+      user => {
+        debugger;
+        window.history.replaceState(
+          {},
+          window.document.title,
+          window.location.origin
+        );
+        setUser(user);
+        navigate("/");
+      },
+      error => {
+        console.error(error);
+      }
+    );
   };
 
   const providerValue = {
